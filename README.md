@@ -19,12 +19,12 @@ Component structure:
   App:
     props: none
     state: none
-    fetch: none
+    fetch: get everything! fill in state.
     renders: LoginForm, UserContainer
   UserContainer:
     props: none
     state: none
-    fetch: get all users basic information
+    fetch: none
     renders: UserList, UserProfile, NewUserForm
   UserList:
     props: {
@@ -50,9 +50,9 @@ Component structure:
     fetch: none
     renders: none
   UserProfile:
-    props: none
-    state: detailed user information
-    fetch: get user detailed information
+    props: detailed user information
+    state: none
+    fetch: none
     renders: EditUserForm ? (for currentUser only)
   LoginForm:
     props: none
@@ -78,9 +78,5 @@ Component structure:
         perform: boolean
       }
     }
-    fetch:
-      - post to create user
-      - get all instruments
-      - get all families
-      - get all genres
+    fetch: post to create user
     renders: none
