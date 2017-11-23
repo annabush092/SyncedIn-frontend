@@ -20,12 +20,12 @@ Component structure:
     props: none
     state: none
     fetch: get everything! fill in state.
-    renders: LoginForm, UserContainer
+    renders: LoginForm, UserContainer, NewUserForm
   UserContainer:
     props: none
     state: none
     fetch: none
-    renders: UserList, UserProfile, NewUserForm
+    renders: UserList, UserProfile
   UserList:
     props: {
       allUsers: [ {}, {}, etc ]
