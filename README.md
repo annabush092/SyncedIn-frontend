@@ -4,6 +4,42 @@ backend: https://github.com/annabush092/syncedIn-backend
 
 frameworks: React, Redux
 
+*/
+???:
+
+Why can't I give a hash as an argument to my custom method? (user.add_skill({hash here???}))
+Error is that Rails is looking for methods with the names of each key, so it errors when it doesn't find them. So do I have to use regular old arguments and just remember what they are? (annoying...)
+
+
+TODO:
+
+done  -  end of day Wednesday: create db, models, associations, start seeding
+done - end of day Friday:
+  seed db with:
+    ~10 instruments + relevant families,
+    ~3 genres,
+    ~5 users,
+    DETAILED associations so I have enough to test with and don't have to add
+      anything extra to be able to work on front-end
+  start controllers/routes
+done (Fri)- end of day Saturday:
+  finish API, test with Postman
+  Get Redux structure set up in front-end
+done (Fri)- end of day Sunday:
+  UserProfile (detailed show pages),
+  UserList and UserCard (basic info to display in list)
+  no formatting yet
+end of day Sunday:
+  filters for User list
+  formatting of index and profile
+
+stretch goals for end of day Monday:
+  allow users to "friend" other users
+  basic login (no auth) and sign-up forms
+  allow users to edit their profile - think of a good way to approach this
+
+/*
+
 
 store state structure:
   users: {

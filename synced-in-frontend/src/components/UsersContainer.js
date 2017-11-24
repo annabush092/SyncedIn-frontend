@@ -9,10 +9,20 @@ class UsersContainer extends React.Component {
   render() {
     return (
       <div>
-        <Route path={this.props.match.url} render={()=>(<h1>Users Container</h1>)} />
-        <Route exact path={this.props.match.url} render={()=>(<UserList allUsers={this.props.allUsers}/>)}
+        <Route
+          exact path={this.props.match.url}
+          render={()=>(<UserList allUsers={this.props.allUsers}/>)}
         />
-        <Route exact path={`${this.props.match.url}/:id`} component={Profile}/>
+        <Route
+          exact path={`${this.props.match.url}/:id`}
+          render={(props) => {
+            if(!this.props.loading) {
+              return (<Profile {...props} allUsers={this.props.allUsers}/>)
+            }else {
+              return( <p> Loading... </p>)
+            }
+          }}
+        />
       </div>
     )
   }
@@ -20,7 +30,8 @@ class UsersContainer extends React.Component {
 
 function mapStateToProps(state) {
   return ({
-    allUsers: state.users.list
+    allUsers: state.users.list,
+    loading: state.users.loading
   })
 }
 
