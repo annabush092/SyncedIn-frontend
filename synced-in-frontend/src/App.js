@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import LoginForm from './components/LoginForm.js'
 import UsersContainer from './components/UsersContainer.js'
@@ -13,8 +13,10 @@ class App extends Component {
       <div>
         <Route exact path="/" render={()=>(<div>Hello from App</div>)}/>
         <Route path="/login" render={()=>(<LoginForm/>)}/>
-        <Route exact path="/users" render={()=>(<UsersContainer/>)}/>
-        <Route path="/users/new" render={()=>(<NewUserForm/>)}/>
+        <Switch>
+          <Route exact path="/users/new" render={()=>(<NewUserForm/>)}/>
+          <Route path="/users" render={(props)=>(<UsersContainer {...props}/>)}/>
+        </Switch>
       </div>
     );
   }
