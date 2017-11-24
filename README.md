@@ -7,12 +7,42 @@ frameworks: React, Redux
 
 store state structure:
   users: {
-    list: [ {only basic information for user cards}, {}, etc ]
-    currentUser: {full user information from backend}
+    list: [ {}, {}, etc ]
+    currentUser: {}
   }
-  instruments: [ {id: , name: "", family_id: }, {id: , name: "", family_id: }, etc]
-  families: [ {id: , name: ""}, {id: , name: ""}, etc ]
-  genres: [ {id: , name: ""}, {id: , name: ""}, etc ]
+  instruments: [ {id: , name: "", family_id: }, {}, etc]
+  families: [ {id: , name: ""}, {}, etc ]
+  genres: [ {id: , name: ""}, {}, etc ]
+
+User api looks like:
+{
+  id: 2,
+  username: "email@email.com",
+  full_name: "First Last",
+  show_skills: [
+    {
+      instrument: "",
+      skills: [
+        {
+          genre: "",
+          perform: true/false,
+          teach: true/false
+        },
+        {}, etc
+      ]
+    },
+    {}, etc
+  ],
+  contacts: [
+    {
+      id: 3,
+      first_name: "",
+      username: "email@email.com",
+      last_name: ""
+    },
+    {}, etc
+  ]
+}
 
 
 Component structure:

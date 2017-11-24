@@ -11,9 +11,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" render={()=>(<div>Hello from App</div>)}/>
-        <Route path="/login" render={()=>(<LoginForm/>)}/>
+        <Route path="/" render={()=>(<h1>syncedIn Home</h1>)}/>
         <Switch>
+          <Route exact path="/login" render={()=>(<LoginForm/>)}/>
           <Route exact path="/users/new" render={()=>(<NewUserForm/>)}/>
           <Route path="/users" render={(props)=>(<UsersContainer {...props}/>)}/>
         </Switch>

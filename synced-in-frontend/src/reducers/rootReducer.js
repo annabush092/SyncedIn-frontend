@@ -1,9 +1,16 @@
 import { combineReducers } from 'redux';
 import { createStore } from 'redux';
-//import reducers
+
+import {familyReducer} from './familyReducer.js'
+import {genreReducer} from './genreReducer.js'
+import {instrumentReducer} from './instrumentReducer.js'
+import {userReducer} from './userReducer.js'
 
 const rootReducer = combineReducers({
-  //reducers
+  users: userReducer,
+  families: familyReducer,
+  genres: genreReducer,
+  instruments: instrumentReducer
 })
 
 export const store = createStore(
