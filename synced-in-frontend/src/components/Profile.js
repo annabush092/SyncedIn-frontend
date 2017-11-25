@@ -5,7 +5,7 @@ class Profile extends React.Component {
   constructor(props) {
     super(props)
     this.user = this.props.allUsers.find((user) => (
-      user.id === parseInt(this.props.match.params.id)
+      user.id === parseInt(this.props.match.params.id, 10)
     ))
   }
 
@@ -46,13 +46,18 @@ class Profile extends React.Component {
   )
 
   render() {
-    return(
-      <div>
-        <h1>{this.user.full_name}</h1>
-        {this.renderSkills()}
-        {this.renderContacts()}
-      </div>
-    )
+    if(this.user) {
+      return (
+        <div>
+          <h1>{this.user.full_name}</h1>
+          {this.renderSkills()}
+          {this.renderContacts()}
+        </div>
+      )
+    }
+    else {
+      return (<div> 404: User with id={this.props.match.params.id} does not exist! </div>)
+    }
   }
 }
 

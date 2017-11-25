@@ -1,13 +1,14 @@
 import React from 'react'
 
-class UserFilter extends React.Component {
-  render() {
-    return(
-      <div>
-        User Filter
-      </div>
-    )
-  }
+function UserFilter(props){
+  return(
+    <div>
+      <form>
+        <label>Search users: </label>
+        <input type="text" onChange={props.handleInput}/>
+      </form>
+    </div>
+  )
 }
 
 export default UserFilter

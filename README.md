@@ -13,7 +13,7 @@ Error is that Rails is looking for methods with the names of each key, so it err
 
 TODO:
 
-done  -  end of day Wednesday: create db, models, associations, start seeding
+done - end of day Wednesday: create db, models, associations, start seeding
 done - end of day Friday:
   seed db with:
     ~10 instruments + relevant families,

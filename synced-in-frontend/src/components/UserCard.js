@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'uuid'
 
 class UserCard extends React.Component {
 
@@ -8,7 +9,7 @@ class UserCard extends React.Component {
 
   myInstruments = () => (
     this.props.show_skills.map((inst_skill) => (
-      <li>{inst_skill.instrument}</li>
+      <li key={uuid()}>{inst_skill.instrument}</li>
     ))
   )
 
