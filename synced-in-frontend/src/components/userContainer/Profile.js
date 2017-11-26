@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'uuid'
 
 class Profile extends React.Component {
 
@@ -11,7 +12,7 @@ class Profile extends React.Component {
 
   renderSkills = () => (
     this.user.show_skills.map((inst_skill) => (
-      <div>
+      <div key={uuid()}>
         <h2>{inst_skill.instrument}</h2>
         <ul>
           {this.skillGenres(inst_skill.skills)}
@@ -22,7 +23,7 @@ class Profile extends React.Component {
 
   skillGenres = (genreArr) => (
     genreArr.map((genObj) => (
-      <li>
+      <li key={uuid()}>
         <ul>
           <h3>Genre: {genObj.genre}</h3>
           <li>Qualified to teach: {genObj.teach ? "Yes" : "No"} </li>
@@ -33,7 +34,7 @@ class Profile extends React.Component {
   )
 
   renderContacts = () => (
-    <div>
+    <div key={uuid()}>
       <h2>Contacts: </h2>
       <ul>{this.contactsList()}</ul>
     </div>
@@ -41,14 +42,14 @@ class Profile extends React.Component {
 
   contactsList = () => (
     this.user.contacts.map((cont) => (
-      <li>{cont.first_name} {cont.last_name}</li>
+      <li key={uuid()}>{cont.first_name} {cont.last_name}</li>
     ))
   )
 
   render() {
     if(this.user) {
       return (
-        <div>
+        <div key={uuid()}>
           <h1>{this.user.full_name}</h1>
           {this.renderSkills()}
           {this.renderContacts()}

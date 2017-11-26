@@ -10,6 +10,8 @@ frameworks: React, Redux
 Why can't I give a hash as an argument to my custom method? (user.add_skill({hash here???}))
 Error is that Rails is looking for methods with the names of each key, so it errors when it doesn't find them. So do I have to use regular old arguments and just remember what they are? (annoying...)
 
+Why is my NavLink not working and rendering the url? Url changes, but the page does not...
+
 
 TODO:
 

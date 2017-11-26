@@ -23,8 +23,8 @@ class App extends Component {
     return (
       <div>
         <Route exact path="/" render={()=>(<h1>syncedIn Home</h1>)}/>
+        <Route exact path="/login" render={()=>(<LoginForm/>)}/>
         <Switch>
-          <Route exact path="/login" render={()=>(<LoginForm/>)}/>
           <Route exact path="/users/new" render={()=>(<NewUserForm/>)}/>
           <Route path="/users" render={(props)=>(<UsersContainer {...props}/>)}/>
         </Switch>
