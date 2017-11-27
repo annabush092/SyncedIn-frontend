@@ -31,11 +31,11 @@ done (Fri)- end of day Sunday:
   UserProfile (detailed show pages),
   UserList and UserCard (basic info to display in list)
   no formatting yet
-end of day Sunday:
+done (Saturday) - end of day Sunday:
   filters for User list
-  formatting of index and profile
 
 stretch goals for end of day Monday:
+  formatting of index and profile
   allow users to "friend" other users
   basic login (no auth) and sign-up forms
   allow users to edit their profile - think of a good way to approach this

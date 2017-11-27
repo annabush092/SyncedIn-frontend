@@ -1,7 +1,12 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 import uuid from 'uuid'
 
 class UserCard extends React.Component {
+
+  state = {
+    seeProfile: false
+  }
 
   cardStyle = () => ({
     borderStyle: 'solid'
@@ -13,12 +18,21 @@ class UserCard extends React.Component {
     ))
   )
 
+  renderProfile = () => {
+    this.setState({seeProfile: true})
+  }
+
   render() {
     return(
-      <div style={this.cardStyle()}>
-        <h3>{this.props.full_name}</h3>
-        <ul>{this.myInstruments()}</ul>
-      </div>
+      this.state.seeProfile ? (
+        <Redirect to={`/users/${this.props.id}`} />
+      ) : (
+        <div style={this.cardStyle()}>
+          <h3>{this.props.full_name}</h3>
+          <ul>{this.myInstruments()}</ul>
+          <button onClick={this.renderProfile}>View Profile</button>
+        </div>
+      )
     )
   }
 }
