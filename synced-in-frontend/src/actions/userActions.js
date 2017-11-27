@@ -58,18 +58,43 @@ function updateUser(json) {
 }
 
 export function followUser(currentUserId, followId) {
-  console.log("inside followUser reducer")
   return function(dispatch) {
-    console.log("inside inside followUser reducer, userId: ", currentUserId)
-
     dispatch(loading())
-    fetch(`http://localhost:3000/api/v1/users/${currentUserId}`, {
-      method: "PUT",
+    fetch(`http://localhost:3000/api/v1/user_follows`, {
+      method: "POST",
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        follow_id: followId
+        followed_id: currentUserId,
+        following_id: followId
+      })
+    })
+    .then(res => res.json())
+    .then(json => {
+      console.log("response: ", json)
+      if(json.username) {
+        dispatch(updateUser(json))
+      }else{
+        dispatch(fetchError(json.errors))
+      }
+    })
+  }
+}
+
+export function unfollowUser(currentUserId, followId) {
+  return function(dispatch) {
+    console.log("inside inside followUser reducer, userId: ", currentUserId)
+
+    dispatch(loading())
+    fetch(`http://localhost:3000/api/v1/delete_user_follows`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        followed_id: currentUserId,
+        following_id: followId
       })
     })
     .then(res => res.json())

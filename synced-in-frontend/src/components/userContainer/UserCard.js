@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
 
-import { followUser } from '../../actions/userActions.js'
+import { followUser, unfollowUser } from '../../actions/userActions.js'
 
 class UserCard extends React.Component {
 
@@ -26,8 +26,11 @@ class UserCard extends React.Component {
   }
 
   onFollowUser = () => {
-    console.log("clicked button")
     this.props.followingUser(this.props.currentUser.id, this.props.id)
+  }
+
+  onUnfollowUser = () => {
+    this.props.unfollowingUser(this.props.currentUser.id, this.props.id)
   }
 
   render() {
@@ -38,7 +41,11 @@ class UserCard extends React.Component {
         <div style={this.cardStyle()}>
           <h3 onClick={this.onRenderProfile}>{this.props.full_name}</h3>
           <ul>{this.myInstruments()}</ul>
-          <button onClick={this.onFollowUser}>Follow</button>
+          {this.props.currentUser.following.find(followUser => (followUser.id === this.props.id)) ? (
+            <button onClick={this.onUnfollowUser}>Unfollow</button>
+          ) : (
+            <button onClick={this.onFollowUser}>Follow</button>
+          )}
         </div>
       )
     )
@@ -53,7 +60,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    followingUser: (currentUserId, followId) => {dispatch(followUser(currentUserId, followId))}
+    followingUser: (currentUserId, followId) => {dispatch(followUser(currentUserId, followId))},
+    unfollowingUser: (currentUserId, followId) => {dispatch(unfollowUser(currentUserId, followId))}
   }
 }
 
