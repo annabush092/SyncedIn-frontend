@@ -20,8 +20,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("App is rendering!")
-    console.log("App state.loggedIn: ", this.props.loggedIn)
     return (
       <div>
         <Route exact path="/" render={()=>(

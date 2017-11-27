@@ -48,8 +48,10 @@ class UserList extends React.Component {
 
   userCards = () => (
     this.props.allUsers.reduce((acc, user) => {
-      if(this.filterUsers(user)) {
-        acc.push(<UserCard key={`user-${user.id}`} {...user}/>)
+      if(user.id !== this.props.currentUser.id){
+        if(this.filterUsers(user)) {
+          acc.push(<UserCard key={`user-${user.id}`} {...user}/>)
+        }
       }
       return acc
     }, [])

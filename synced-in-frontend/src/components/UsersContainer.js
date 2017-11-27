@@ -8,7 +8,6 @@ import Profile from './userContainer/Profile.js'
 
 class UsersContainer extends React.Component {
   render() {
-    console.log("User Container is rendering!")
     return (
       this.props.loggedIn ? (
         <div>
@@ -16,7 +15,7 @@ class UsersContainer extends React.Component {
           <div>
             <Route
               exact path={this.props.match.url}
-              render={()=>(<UserList allUsers={this.props.allUsers}/>)}
+              render={()=>(<UserList allUsers={this.props.allUsers} currentUser={this.props.currentUser}/>)}
             />
             <Route
               exact path={`${this.props.match.url}/:id`}

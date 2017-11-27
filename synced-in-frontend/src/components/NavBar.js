@@ -1,7 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
 
   currentPageStyle = () => (
     {
@@ -26,7 +27,21 @@ export default class NavBar extends React.Component {
           style={this.linkStyle()}
           activeStyle={this.currentPageStyle()}
         > Find Musicians </NavLink>
+        <NavLink
+          to={`/users/${this.props.currentUser.id}`}
+          exact
+          style={this.linkStyle()}
+          activeStyle={this.currentPageStyle()}
+        > See My Profile </NavLink>
       </div>
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.users.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(NavBar)

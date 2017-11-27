@@ -1,9 +1,13 @@
-function initialize_users(user_arr) {
-  return {type: "INITIALIZE_USERS", payload: user_arr}
-}
-
 function loading() {
   return {type: "FETCHING"}
+}
+
+function fetchError(errorArr) {
+  return {type: "FETCH_ERROR", payload: errorArr}
+}
+
+function initialize_users(user_arr) {
+  return {type: "INITIALIZE_USERS", payload: user_arr}
 }
 
 export function fetch_users() {
@@ -19,10 +23,6 @@ export function fetch_users() {
 
 function log_in(user_obj) {
   return {type: "LOG_IN", payload: user_obj}
-}
-
-function not_authenticated(errorArr) {
-  return {type: "NO_AUTH", payload: errorArr}
 }
 
 export function post_login(username, password) {
@@ -43,7 +43,38 @@ export function post_login(username, password) {
       if(json.username) {
         dispatch(log_in(json))
       } else {
-        dispatch(not_authenticated(json.errors))
+        dispatch(fetchError(json.errors))
+      }
+    })
+  }
+}
+
+function updateUser(json) {
+  return {type: "UPDATE_USER", payload: json}
+}
+
+export function followUser(currentUserId, followId) {
+  console.log("inside followUser reducer")
+  return function(dispatch) {
+    console.log("inside inside followUser reducer, userId: ", currentUserId)
+
+    dispatch(loading())
+    fetch(`http://localhost:3000/api/v1/users/${currentUserId}`, {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        follow_id: followId
+      })
+    })
+    .then(res => res.json())
+    .then(json => {
+      console.log("response: ", json)
+      if(json.username) {
+        dispatch(updateUser(json))
+      }else{
+        dispatch(fetchError(json.errors))
       }
     })
   }

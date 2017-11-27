@@ -33,15 +33,15 @@ class Profile extends React.Component {
     ))
   )
 
-  renderContacts = () => (
+  renderFollowing = () => (
     <div key={uuid()}>
-      <h2>Contacts: </h2>
-      <ul>{this.contactsList()}</ul>
+      <h2>Currently {this.user.full_name} is following: </h2>
+      <ul>{this.followingList()}</ul>
     </div>
   )
 
-  contactsList = () => (
-    this.user.contacts.map((cont) => (
+  followingList = () => (
+    this.user.following.map((cont) => (
       <li key={uuid()}>{cont.first_name} {cont.last_name}</li>
     ))
   )
@@ -52,7 +52,7 @@ class Profile extends React.Component {
         <div key={uuid()}>
           <h1>{this.user.full_name}</h1>
           {this.renderSkills()}
-          {this.renderContacts()}
+          {this.renderFollowing()}
         </div>
       )
     }

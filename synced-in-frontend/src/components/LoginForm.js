@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
       ) : (
         <div>
           {(this.props.errors.length > 0) ? (
-            <h3>{this.props.errors} Please try again.</h3>
+            <h3>{this.props.errors}</h3>
           ) : (
             null
           )}
