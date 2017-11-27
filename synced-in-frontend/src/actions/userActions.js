@@ -49,6 +49,10 @@ export function post_login(username, password) {
   }
 }
 
+export function logout() {
+  return {type: "LOGOUT"}
+}
+
 function updateUser(json) {
   return {type: "UPDATE_USER", payload: json}
 }

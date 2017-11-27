@@ -36,10 +36,12 @@ done (Saturday) - end of day Sunday:
 
 stretch goals for end of day Monday:
   formatting of index and profile
-  allow users to "friend" other users
+  allow users to follow other users
   basic login (no auth) and sign-up forms
   allow users to edit their profile - think of a good way to approach this
 
+catch validation errors when following someone you already follow.
+fix formatting bug of NavBar- why is the color not changing when we change route?
 /*
 
 

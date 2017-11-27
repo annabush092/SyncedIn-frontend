@@ -2,6 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
+import { logout } from '../actions/userActions.js'
+
 class NavBar extends React.Component {
 
   currentPageStyle = () => (
@@ -18,6 +20,10 @@ class NavBar extends React.Component {
     }
   )
 
+  onLogout = () => {
+    this.props.toLogOut()
+  }
+
   render() {
     return(
       <div>
@@ -33,6 +39,7 @@ class NavBar extends React.Component {
           style={this.linkStyle()}
           activeStyle={this.currentPageStyle()}
         > See My Profile </NavLink>
+        <button onClick={this.onLogout}>Log out</button>
       </div>
     )
   }
@@ -44,4 +51,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(NavBar)
+function mapDispatchToProps(dispatch) {
+  return {
+    toLogOut: () => { dispatch(logout()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar)

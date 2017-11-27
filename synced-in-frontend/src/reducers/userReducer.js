@@ -19,6 +19,8 @@ export function userReducer(state={
       //action.payload should be an array of user objects
     case "LOG_IN":
       return {...state, currentUser: action.payload, loggedIn: true, loading: false, errors: []}
+    case "LOGOUT":
+      return {...state, currentUser: {}, loggedIn: false}
     case "UPDATE_USER":
       console.log("made it to reducer: ", action.payload)
       return {...state, currentUser: action.payload, errors: [], loading: false}
