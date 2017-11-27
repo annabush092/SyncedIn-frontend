@@ -22,9 +22,14 @@ export function userReducer(state={
     case "LOGOUT":
       return {...state, currentUser: {}, loggedIn: false}
     case "UPDATE_USER":
-      console.log("made it to reducer: ", action.payload)
-      return {...state, currentUser: action.payload, errors: [], loading: false}
-
+      let newList = state.list.map((user)=>{
+        if(user.id === state.currentUser.id) {
+          return action.payload
+        }else {
+          return user
+        }
+      })
+      return {...state, currentUser: action.payload, list: newList, errors: [], loading: false}
     default:
       return state
   }

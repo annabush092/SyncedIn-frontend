@@ -33,16 +33,19 @@ done (Fri)- end of day Sunday:
   no formatting yet
 done (Saturday) - end of day Sunday:
   filters for User list
+done (Mon) - stretch goals for end of day Monday:
+  done - allow users to follow other users
+  done - basic login (no auth) and sign-up forms
+  done (Mon) - catch validation errors when following someone you already follow.
+  done (Mon) - make entire website update when you change something in the backend
+  (Profile is not updated when currentUser makes a change like following/unfollowing)
 
-stretch goals for end of day Monday:
+Tuesday:
+  fix formatting bug of NavBar- why is the color not changing when we change route?
   formatting of index and profile
-done - allow users to follow other users
-done - basic login (no auth) and sign-up forms
   allow users to edit their profile - think of a good way to approach this
+  update readme info (backend especially)
 
-done (Mon) - catch validation errors when following someone you already follow.
-fix formatting bug of NavBar- why is the color not changing when we change route?
-make entire website update when you change something in the backend (Profile is not updated when currentUser makes a change like following/unfollowing)
 /*
 
 
