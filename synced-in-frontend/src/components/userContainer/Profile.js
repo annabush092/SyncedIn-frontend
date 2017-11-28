@@ -41,8 +41,8 @@ class Profile extends React.Component {
   )
 
   followingList = () => (
-    this.user.following.map((cont) => (
-      <li key={uuid()}>{cont.first_name} {cont.last_name}</li>
+    this.user.users_i_am_following.map((u) => (
+      <li key={uuid()}>{u.full_name}</li>
     ))
   )
 

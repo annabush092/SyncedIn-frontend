@@ -9,6 +9,8 @@ import {fetch_users, post_login} from './actions/userActions.js'
 import {fetch_instruments} from './actions/instrumentActions.js'
 import {fetch_genres} from './actions/genreActions.js'
 import {fetch_families} from './actions/familyActions.js'
+import {fetch_posts} from './actions/postActions.js'
+import {fetch_tags} from './actions/tagActions.js'
 
 class App extends Component {
 
@@ -17,6 +19,8 @@ class App extends Component {
     this.props.get_instruments()
     this.props.get_families()
     this.props.get_genres()
+    this.props.get_posts()
+    this.props.get_tags()
   }
 
   render() {
@@ -54,6 +58,8 @@ function mapDispatchToProps(dispatch) {
     get_instruments: ( () => {dispatch(fetch_instruments())} ),
     get_families: ( () => {dispatch(fetch_families())} ),
     get_genres: ( () => {dispatch(fetch_genres())} ),
+    get_posts: ( () => {dispatch(fetch_posts())} ),
+    get_tags: ( () => {dispatch(fetch_tags())} ),
     log_in: ( (username, password) => {dispatch(post_login(username, password))} )
   })
 }

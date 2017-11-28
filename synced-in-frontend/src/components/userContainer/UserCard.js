@@ -32,7 +32,7 @@ class UserCard extends React.Component {
         <Link to={`/users/${this.props.id}`}>{this.props.full_name}</Link>
         <ul>{this.myInstruments()}</ul>
 
-        {this.props.currentUser.following.find(followUser => (followUser.id === this.props.id)) ? (
+        {this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.id)) ? (
           <button onClick={this.onUnfollowUser}>Unfollow</button>
         ) : (
           <button onClick={this.onFollowUser}>Follow</button>
