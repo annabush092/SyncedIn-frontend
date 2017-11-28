@@ -44,7 +44,8 @@ Tuesday:
   fix formatting bug of NavBar- why is the color not changing when we change route?
   formatting of index and profile
   allow users to edit their profile - think of a good way to approach this
-  update readme info (backend especially)
+  done - update readme info (backend especially)
+  add posts and tags
 
 /*
 
