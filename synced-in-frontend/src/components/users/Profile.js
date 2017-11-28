@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import uuid from 'uuid'
 import { Grid, Segment } from 'semantic-ui-react'
 
@@ -9,28 +10,30 @@ class Profile extends React.Component {
 
   constructor(props) {
     super(props)
-    this.user = this.props.allUsers.find((user) => (
-      user.id === parseInt(this.props.match.params.id, 10)
-    ))
+    this.state = {
+      user: this.props.allUsers.find((storeU) => (
+        storeU.id === parseInt(this.props.match.params.id, 10)
+      ))
+    }
   }
 
   renderSkills = () => (
-    this.user.show_skills.map((inst_skill) => (
-      <Grid.Column>
+    this.state.user.show_skills.map((inst_skill) => (
+      <Grid.Column key={uuid()}>
         <SkillCard key={uuid()} instrument={inst_skill.instrument} skills={inst_skill.skills}/>
       </Grid.Column>
     ))
   )
 
   followingList = () => (
-    this.user.users_i_am_following.map((u) => {
+    this.state.user.users_i_am_following.map((u) => {
       let userFromState = this.props.allUsers.find((stateU)=>(u.id === stateU.id))
       return <UserCard key={uuid()} {...userFromState}/>
     })
   )
 
   render() {
-    if(this.user) {
+    if(this.state.user) {
       return (
         <div key={uuid()}>
           <Grid columns='equal'>
@@ -40,7 +43,7 @@ class Profile extends React.Component {
             </Grid.Column>
             <Grid.Column>
               <Segment>
-                <h1>{this.user.full_name}</h1>
+                <h1>{this.state.user.full_name}</h1>
                 <Grid columns={2}>
                   {this.renderSkills()}
                 </Grid>
@@ -56,4 +59,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile
+export default withRouter(Profile)

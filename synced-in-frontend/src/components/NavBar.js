@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu, Button } from 'semantic-ui-react'
 
@@ -35,7 +35,7 @@ class NavBar extends React.Component {
                 to={`/users/${this.props.currentUser.id}`}
                 exact
                 style={this.linkStyle()}
-              > See My Profile </NavLink>
+              > See my Profile </NavLink>
             </Menu.Item>
             <Menu.Item>
               <Button onClick={this.onLogout}>Log out</Button>
@@ -55,8 +55,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    toLogOut: () => { dispatch(logout()) }
+    toLogOut: () => { dispatch(logout()) },
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NavBar)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))

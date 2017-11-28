@@ -1,4 +1,6 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import uuid from 'uuid'
 import { Card } from 'semantic-ui-react'
 
 import UserFilter from './UserFilter.js'
@@ -51,7 +53,7 @@ class UserList extends React.Component {
     this.props.allUsers.reduce((acc, user) => {
       if(user.id !== this.props.currentUser.id){
         if(this.filterUsers(user)) {
-          acc.push(<UserCard key={`user-${user.id}`} {...user}/>)
+          acc.push(<UserCard key={uuid()} {...user}/>)
         }
       }
       return acc
@@ -70,4 +72,4 @@ class UserList extends React.Component {
   }
 }
 
-export default UserList
+export default withRouter(UserList)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, withRouter } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
@@ -63,7 +63,7 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+export default withRouter(LoginForm)
 
 
   // <form onSubmit={this.handleSubmit}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
 import { Card, List, Button } from 'semantic-ui-react'
@@ -58,8 +58,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     followingUser: (currentUserId, followId) => {dispatch(followUser(currentUserId, followId))},
-    unfollowingUser: (currentUserId, followId) => {dispatch(unfollowUser(currentUserId, followId))}
+    unfollowingUser: (currentUserId, followId) => {dispatch(unfollowUser(currentUserId, followId))},
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserCard)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserCard))

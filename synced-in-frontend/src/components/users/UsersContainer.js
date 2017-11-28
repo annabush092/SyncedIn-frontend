@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom'
+import { Route, Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import NavBar from './NavBar.js'
-import UserList from './userContainer/UserList.js'
-import Profile from './userContainer/Profile.js'
+import NavBar from '../NavBar.js'
+import UserList from './UserList.js'
+import Profile from './Profile.js'
 
 class UsersContainer extends React.Component {
   render() {
@@ -15,10 +15,10 @@ class UsersContainer extends React.Component {
           <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
             <Route
               exact path={this.props.match.url}
-              render={()=>(<UserList allUsers={this.props.allUsers} currentUser={this.props.currentUser}/>)}
+              render={(props)=>(<UserList {...props} allUsers={this.props.allUsers} currentUser={this.props.currentUser}/>)}
             />
             <Route
-              exact path={`${this.props.match.url}/:id`}
+              path={`${this.props.match.url}/:id`}
               render={(props) => {
                 if(!this.props.loading) {
                   return (<Profile {...props} allUsers={this.props.allUsers}/>)
@@ -45,4 +45,4 @@ function mapStateToProps(state) {
   })
 }
 
-export default connect(mapStateToProps)(UsersContainer);
+export default withRouter(connect(mapStateToProps)(UsersContainer));
