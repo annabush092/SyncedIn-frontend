@@ -72,7 +72,6 @@ export function followUser(currentUserId, followId) {
     })
     .then(res => res.json())
     .then(json => {
-      console.log("response: ", json)
       if(json.username) {
         dispatch(updateUser(json))
       }else{
@@ -84,8 +83,6 @@ export function followUser(currentUserId, followId) {
 
 export function unfollowUser(currentUserId, followId) {
   return function(dispatch) {
-    console.log("inside inside followUser reducer, userId: ", currentUserId)
-
     dispatch(loading())
     fetch(`http://localhost:3000/api/v1/delete_user_follows`, {
       method: "POST",
@@ -99,7 +96,6 @@ export function unfollowUser(currentUserId, followId) {
     })
     .then(res => res.json())
     .then(json => {
-      console.log("response: ", json)
       if(json.username) {
         dispatch(updateUser(json))
       }else{

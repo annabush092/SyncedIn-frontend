@@ -1,4 +1,5 @@
 import React from 'react'
+import { Card } from 'semantic-ui-react'
 
 import UserFilter from './UserFilter.js'
 import UserCard from './UserCard.js'
@@ -61,7 +62,9 @@ class UserList extends React.Component {
     return(
       <div>
         <UserFilter handleInput={this.handleInput}/>
-        {this.userCards()}
+        <Card.Group style={{paddingTop: '30px'}}>
+          {this.userCards()}
+        </Card.Group>
       </div>
     )
   }

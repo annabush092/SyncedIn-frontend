@@ -1,13 +1,9 @@
 import React from 'react'
+import { Input, Icon } from 'semantic-ui-react'
 
 function UserFilter(props){
   return(
-    <div>
-      <form>
-        <label>Search users: </label>
-        <input type="text" onChange={props.handleInput}/>
-      </form>
-    </div>
+    <Input icon={<Icon name='search' inverted circular link/>} placeholder='Filter Musicians...' onChange={props.handleInput}/>
   )
 }
 

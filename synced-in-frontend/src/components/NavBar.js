@@ -1,21 +1,15 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { Menu, Button } from 'semantic-ui-react'
 
 import { logout } from '../actions/userActions.js'
 
 class NavBar extends React.Component {
 
-  currentPageStyle = () => (
-    {
-      background: 'black',
-      color: 'white'
-    }
-  )
-
   linkStyle = () => (
     {
-      background: 'blue',
+      background: 'black',
       color: 'white'
     }
   )
@@ -27,19 +21,27 @@ class NavBar extends React.Component {
   render() {
     return(
       <div>
-        <NavLink
-          to='/users'
-          exact
-          style={this.linkStyle()}
-          activeStyle={this.currentPageStyle()}
-        > Find Musicians </NavLink>
-        <NavLink
-          to={`/users/${this.props.currentUser.id}`}
-          exact
-          style={this.linkStyle()}
-          activeStyle={this.currentPageStyle()}
-        > See My Profile </NavLink>
-        <button onClick={this.onLogout}>Log out</button>
+        <Menu fixed='top' inverted>
+          <Menu.Menu position='right'>
+            <Menu.Item>
+              <NavLink
+                to='/users'
+                exact
+                style={this.linkStyle()}
+              > Find Musicians </NavLink>
+            </Menu.Item>
+            <Menu.Item>
+              <NavLink
+                to={`/users/${this.props.currentUser.id}`}
+                exact
+                style={this.linkStyle()}
+              > See My Profile </NavLink>
+            </Menu.Item>
+            <Menu.Item>
+              <Button onClick={this.onLogout}>Log out</Button>
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
       </div>
     )
   }

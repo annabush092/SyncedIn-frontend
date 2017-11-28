@@ -1,5 +1,9 @@
 import React from 'react'
 import uuid from 'uuid'
+import { Grid, Segment } from 'semantic-ui-react'
+
+import SkillCard from './SkillCard.js'
+import UserCard from './UserCard.js'
 
 class Profile extends React.Component {
 
@@ -12,47 +16,37 @@ class Profile extends React.Component {
 
   renderSkills = () => (
     this.user.show_skills.map((inst_skill) => (
-      <div key={uuid()}>
-        <h2>{inst_skill.instrument}</h2>
-        <ul>
-          {this.skillGenres(inst_skill.skills)}
-        </ul>
-      </div>
+      <Grid.Column>
+        <SkillCard key={uuid()} instrument={inst_skill.instrument} skills={inst_skill.skills}/>
+      </Grid.Column>
     ))
-  )
-
-  skillGenres = (genreArr) => (
-    genreArr.map((genObj) => (
-      <li key={uuid()}>
-        <ul>
-          <h3>Genre: {genObj.genre}</h3>
-          <li>Qualified to teach: {genObj.teach ? "Yes" : "No"} </li>
-          <li>Qualified to perform: {genObj.perform ? "Yes" : "No"}</li>
-        </ul>
-      </li>
-    ))
-  )
-
-  renderFollowing = () => (
-    <div key={uuid()}>
-      <h2>Currently {this.user.full_name} is following: </h2>
-      <ul>{this.followingList()}</ul>
-    </div>
   )
 
   followingList = () => (
-    this.user.users_i_am_following.map((u) => (
-      <li key={uuid()}>{u.full_name}</li>
-    ))
+    this.user.users_i_am_following.map((u) => {
+      let userFromState = this.props.allUsers.find((stateU)=>(u.id === stateU.id))
+      return <UserCard key={uuid()} {...userFromState}/>
+    })
   )
 
   render() {
     if(this.user) {
       return (
         <div key={uuid()}>
-          <h1>{this.user.full_name}</h1>
-          {this.renderSkills()}
-          {this.renderFollowing()}
+          <Grid columns='equal'>
+            <Grid.Column width={5}>
+              <h2>Following: </h2>
+              {this.followingList()}
+            </Grid.Column>
+            <Grid.Column>
+              <Segment>
+                <h1>{this.user.full_name}</h1>
+                <Grid columns={2}>
+                  {this.renderSkills()}
+                </Grid>
+              </Segment>
+            </Grid.Column>
+          </Grid>
         </div>
       )
     }

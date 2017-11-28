@@ -12,7 +12,7 @@ class UsersContainer extends React.Component {
       this.props.loggedIn ? (
         <div>
           <NavBar/>
-          <div>
+          <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
             <Route
               exact path={this.props.match.url}
               render={()=>(<UserList allUsers={this.props.allUsers} currentUser={this.props.currentUser}/>)}

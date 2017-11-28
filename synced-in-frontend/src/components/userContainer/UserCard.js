@@ -2,18 +2,19 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
+import { Card, List, Button } from 'semantic-ui-react'
 
 import { followUser, unfollowUser } from '../../actions/userActions.js'
 
 class UserCard extends React.Component {
 
-  cardStyle = () => ({
-    borderStyle: 'solid'
-  })
-
   myInstruments = () => (
     this.props.show_skills.map((inst_skill) => (
-      <li key={uuid()}>{inst_skill.instrument}</li>
+      <List.Item key={uuid()}>
+        <List.Content>
+          {inst_skill.instrument}
+        </List.Content>
+      </List.Item>
     ))
   )
 
@@ -27,18 +28,23 @@ class UserCard extends React.Component {
 
   render() {
     return(
-      <div style={this.cardStyle()}>
+      <Card>
+        <Card.Content>
+          <Card.Header>
+            <Link to={`/users/${this.props.id}`}>{this.props.full_name}</Link>
 
-        <Link to={`/users/${this.props.id}`}>{this.props.full_name}</Link>
-        <ul>{this.myInstruments()}</ul>
+            {this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.id)) ? (
+              <Button floated='right' onClick={this.onUnfollowUser}>Unfollow</Button>
+            ) : (
+              <Button floated='right' onClick={this.onFollowUser}>Follow</Button>
+            )}
 
-        {this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.id)) ? (
-          <button onClick={this.onUnfollowUser}>Unfollow</button>
-        ) : (
-          <button onClick={this.onFollowUser}>Follow</button>
-        )}
-
-      </div>
+          </Card.Header>
+          <Card.Description>
+            <List horizontal>{this.myInstruments()}</List>
+          </Card.Description>
+        </Card.Content>
+      </Card>
     )
   }
 }
