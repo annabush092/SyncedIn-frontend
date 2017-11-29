@@ -15,37 +15,16 @@ Why is my NavLink not working and rendering the url? Url changes, but the page d
 
 TODO:
 
-done - end of day Wednesday: create db, models, associations, start seeding
-done - end of day Friday:
-  seed db with:
-    ~10 instruments + relevant families,
-    ~3 genres,
-    ~5 users,
-    DETAILED associations so I have enough to test with and don't have to add
-      anything extra to be able to work on front-end
-  start controllers/routes
-done (Fri)- end of day Saturday:
-  finish API, test with Postman
-  Get Redux structure set up in front-end
-done (Fri)- end of day Sunday:
-  UserProfile (detailed show pages),
-  UserList and UserCard (basic info to display in list)
-  no formatting yet
-done (Saturday) - end of day Sunday:
-  filters for User list
-done (Mon) - stretch goals for end of day Monday:
-  done - allow users to follow other users
-  done - basic login (no auth) and sign-up forms
-  done (Mon) - catch validation errors when following someone you already follow.
-  done (Mon) - make entire website update when you change something in the backend
-  (Profile is not updated when currentUser makes a change like following/unfollowing)
-
-Tuesday:
-  fix formatting bug of NavBar- why is the color not changing when we change route?
-  formatting of index and profile
-  allow users to edit their profile - think of a good way to approach this
-  done - update readme info (backend especially)
+Priority:
+  fix routing for Profile
+  done - follow/unfollow button should never show up on currentUser's card
+  add state and props to wireframe thingy
   add posts and tags
+
+Not priority:
+  some done - formatting
+  allow users to edit their profile - think of a good way to approach this
+  NewUserForm
 
 /*
 
