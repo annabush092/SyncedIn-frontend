@@ -8,12 +8,12 @@ import {fetch_genres} from './actions/genreActions.js'
 import {fetch_families} from './actions/familyActions.js'
 import {fetch_posts} from './actions/postActions.js'
 import {fetch_tags} from './actions/tagActions.js'
-import {loadingPrep} from './components/loadingPrep.js'
+import {loadingPrep} from './components/navBarContainer/loadingPrep.js'
 import LoginForm from './components/LoginForm.js'
 import NewUserForm from './components/NewUserForm.js'
-import PostsContainer from './components/posts/PostsContainer.js'
-import UsersContainer from './components/users/UsersContainer.js'
-import Profile from './components/users/Profile.js'
+import PostsContainer from './components/postsContainer/PostsContainer.js'
+import UserList from './components/userListContainer/UserList.js'
+import Profile from './components/profileContainer/Profile.js'
 
 class App extends Component {
 
@@ -29,18 +29,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" render={()=>(
-          <div>
-            {this.props.signedIn ? (
-              <Redirect to='/users'/>
-            ) : (
-              <Redirect to='/login'/>
-            )}
-          </div>
-        )}/>
+        <Route exact path="/" render={()=>(<Redirect to='/users'/>)}/>
         <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, LoginForm)}/>
         <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, PostsContainer)}/>
-        <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UsersContainer)}/>
+        <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UserList)}/>
         <Switch>
           <Route exact path="/users/new" component={loadingPrep(this.props.signedIn, this.props.loading, NewUserForm)}/>
           <Route path="/users/:id" component={loadingPrep(this.props.signedIn, this.props.loading, Profile)}/>

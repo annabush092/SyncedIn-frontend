@@ -9,7 +9,7 @@ export function loadingPrep(loggedIn, loading, ComponentArg) {
     loaded = () => {
       if(loading) {
         return ( <h1>Loading...</h1> )
-      } else {
+      }else {
         if(loggedIn) {
           return (
             <div>

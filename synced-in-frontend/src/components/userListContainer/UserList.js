@@ -1,4 +1,6 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 import uuid from 'uuid'
 import { Card } from 'semantic-ui-react'
 
@@ -59,7 +61,7 @@ class UserList extends React.Component {
 
   render() {
     return(
-      <div>
+      <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
         <UserFilter handleInput={this.handleInput}/>
         <Card.Group style={{paddingTop: '30px'}}>
           {this.userCards()}
@@ -69,4 +71,10 @@ class UserList extends React.Component {
   }
 }
 
-export default UserList
+function mapStateToProps(state) {
+  return ({
+    allUsers: state.users.list
+  })
+}
+
+export default withRouter(connect(mapStateToProps)(UserList));

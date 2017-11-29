@@ -3,7 +3,7 @@ import { NavLink, withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu, Button } from 'semantic-ui-react'
 
-import { logout, changeProfile, redirectToProfile } from '../actions/userActions.js'
+import { logout, changeProfile, redirectToProfile } from '../../actions/userActions.js'
 
 class NavBar extends React.Component {
 

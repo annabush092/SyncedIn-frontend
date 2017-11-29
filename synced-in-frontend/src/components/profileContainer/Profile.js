@@ -5,7 +5,7 @@ import uuid from 'uuid'
 import { Grid, Segment } from 'semantic-ui-react'
 
 import SkillCard from './SkillCard.js'
-import UserCard from './UserCard.js'
+import UserCard from '../userListContainer/UserCard.js'
 import { stopRedirectToProfile } from '../../actions/userActions.js'
 
 class Profile extends React.Component {
