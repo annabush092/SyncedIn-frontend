@@ -6,17 +6,15 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 import SkillCard from './SkillCard.js'
 import UserCard from './UserCard.js'
+import { stopRedirectToProfile } from '../../actions/userActions.js'
 
 class Profile extends React.Component {
 
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     user: this.props.allUsers.find((storeU) => (
-  //       storeU.id === parseInt(this.props.match.params.id, 10)
-  //     ))
-  //   }
-  // }
+  componentDidMount() {
+    if(this.props.redirecting) {
+      this.props.stopRedirect()
+    }
+  }
 
   renderSkills = () => (
     this.props.currentProfile.show_skills.map((inst_skill) => (
@@ -64,8 +62,15 @@ function mapStateToProps(state) {
   let fullObj = state.users.list.find((stateU) => (stateU.id === state.users.currentProfile))
   return {
     currentProfile: fullObj,
-    allUsers: state.users.list
+    allUsers: state.users.list,
+    redirecting: state.users.loadProfile
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Profile))
+function mapDispatchToProps(dispatch) {
+  return {
+    stopRedirect: () => { dispatch(stopRedirectToProfile()) }
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile))

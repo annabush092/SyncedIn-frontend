@@ -1,9 +1,9 @@
 import React from 'react'
-import { NavLink, withRouter } from 'react-router-dom'
+import { NavLink, withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Menu, Button } from 'semantic-ui-react'
 
-import { logout } from '../actions/userActions.js'
+import { logout, changeProfile, redirectToProfile } from '../actions/userActions.js'
 
 class NavBar extends React.Component {
 
@@ -16,6 +16,13 @@ class NavBar extends React.Component {
 
   onLogout = () => {
     this.props.toLogOut()
+  }
+
+  onProfileClick = () => {
+    this.props.changeCurrentProfile(this.props.currentUser.id)
+    if(!this.props.location.pathname.includes("/users/") || !Number.isInteger(parseInt(this.props.location.pathname.slice(-1), 10))){
+      this.props.redirectingToProfile()
+    }
   }
 
   render() {
@@ -31,11 +38,10 @@ class NavBar extends React.Component {
               > Find Musicians </NavLink>
             </Menu.Item>
             <Menu.Item>
-              <NavLink
-                to={`/users/${this.props.currentUser.id}`}
-                exact
-                style={this.linkStyle()}
-              > See my Profile </NavLink>
+              <Button onClick={this.onProfileClick}>See my Profile </Button>
+              { this.props.loadNewProfile ? (
+                <Redirect to={`/users/${this.props.currentUser.id}`}/>
+              ) : (null) }
             </Menu.Item>
             <Menu.Item>
               <Button onClick={this.onLogout}>Log out</Button>
@@ -49,13 +55,16 @@ class NavBar extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.users.currentUser
+    currentUser: state.users.currentUser,
+    loadNewProfile: state.users.loadProfile
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     toLogOut: () => { dispatch(logout()) },
+    changeCurrentProfile: (userId) => { dispatch(changeProfile(userId)) },
+    redirectingToProfile: () => { dispatch(redirectToProfile()) }
   }
 }
 

@@ -108,3 +108,9 @@ export function unfollowUser(currentUserId, followId) {
 export function changeProfile(userId) {
   return { type: "CHANGE_PROFILE", payload: userId }
 }
+export function redirectToProfile() {
+  return { type: "REDIRECT_PROFILE" }
+}
+export function stopRedirectToProfile() {
+  return { type: "STOP_REDIRECT_PROFILE" }
+}

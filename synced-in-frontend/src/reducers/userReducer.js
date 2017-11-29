@@ -1,6 +1,7 @@
 export function userReducer(state={
   list: [],
   currentProfile: 0,
+  loadProfile: false,
   currentUser: {},
   loggedIn: false,
   loading: false,
@@ -33,6 +34,10 @@ export function userReducer(state={
       return {...state, currentUser: action.payload, list: newList, errors: [], loading: false}
     case "CHANGE_PROFILE":
       return {...state, currentProfile: action.payload}
+    case "REDIRECT_PROFILE":
+      return {...state, loadProfile: true}
+    case "STOP_REDIRECT_PROFILE":
+      return {...state, loadProfile: false}
     default:
       return state
   }

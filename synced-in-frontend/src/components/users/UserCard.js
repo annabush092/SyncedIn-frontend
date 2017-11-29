@@ -1,10 +1,10 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
 import { Card, List, Button } from 'semantic-ui-react'
 
-import { followUser, unfollowUser } from '../../actions/userActions.js'
+import { followUser, unfollowUser, changeProfile, redirectToProfile } from '../../actions/userActions.js'
 
 class UserCard extends React.Component {
 
@@ -36,12 +36,22 @@ class UserCard extends React.Component {
     }
   }
 
+  onNameClick = () => {
+    this.props.changeCurrentProfile(this.props.id)
+    if(!this.props.location.pathname.includes("/users/") || !Number.isInteger(parseInt(this.props.location.pathname.slice(-1), 10))){
+      this.props.redirectingToProfile()
+    }
+  }
+
   render() {
     return(
       <Card>
         <Card.Content>
           <Card.Header>
-            <Link to={`/users/${this.props.id}`}>{this.props.full_name}</Link>
+            <h2 onClick={this.onNameClick}>{this.props.full_name}</h2>
+            {this.props.loadNewProfile ? (
+              <Redirect to={`/users/${this.props.id}`}/>
+            ) : (null) }
             {this.renderButton()}
           </Card.Header>
           <Card.Description>
@@ -55,7 +65,8 @@ class UserCard extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.users.currentUser
+    currentUser: state.users.currentUser,
+    loadNewProfile: state.users.loadProfile
   }
 }
 
@@ -63,6 +74,8 @@ function mapDispatchToProps(dispatch) {
   return {
     followingUser: (currentUserId, followId) => {dispatch(followUser(currentUserId, followId))},
     unfollowingUser: (currentUserId, followId) => {dispatch(unfollowUser(currentUserId, followId))},
+    changeCurrentProfile: (userId) => { dispatch(changeProfile(userId)) },
+    redirectingToProfile: () => { dispatch(redirectToProfile()) }
   }
 }
 
