@@ -29,18 +29,20 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path='/' render={ () => ({
-          this.props.loggedIn ? (
-            <Redirect to='/posts'/>
-          ) : (
-            <Redirect to='/login'/>
-          )
-        })}/>
-        <Route path="/login" component={LoginForm}/>
-        <Route path='/posts' component={PostsContainer}/>
+        <Route exact path="/" render={()=>(
+          <div>
+            {this.props.signedIn ? (
+              <Redirect to='/users'/>
+            ) : (
+              <Redirect to='/login'/>
+            )}
+          </div>
+        )}/>
+        <Route exact path="/login" component={LoginForm}/>
+        <Route exact path='/posts' component={PostsContainer}/>
         <Route exact path="/users" component={UsersContainer}/>
         <Switch>
-          <Route path="/users/new" component={NewUserForm}/>
+          <Route exact path="/users/new" component={NewUserForm}/>
           <Route path="/users/:id" component={Profile}/>
         </Switch>
       </div>
@@ -50,7 +52,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return ({
-    loggedIn: state.users.loggedIn,
+    signedIn: state.users.loggedIn
   })
 }
 
@@ -65,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   })
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

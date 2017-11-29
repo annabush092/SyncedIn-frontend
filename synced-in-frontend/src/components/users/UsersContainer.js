@@ -7,8 +7,9 @@ import UserList from './UserList.js'
 
 class UsersContainer extends React.Component {
   render() {
+    console.log("hit UsersContainer")
     return (
-      this.props.loggedIn ? (
+      !this.props.loading ? (
         <div>
           <NavBar/>
           <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
@@ -16,7 +17,7 @@ class UsersContainer extends React.Component {
           </div>
         </div>
       ) : (
-        <Redirect to="/login"/>
+        <h1>Loading...</h1>
       )
 
     )

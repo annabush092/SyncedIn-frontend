@@ -22,7 +22,7 @@ class LoginForm extends React.Component {
 
   handleSubmit = (ev) => {
     ev.preventDefault()
-    this.props.log_in(this.state.username, this.state.password)
+    this.props.logIn(this.state.username, this.state.password)
     this.setState({
       username: "",
       password: ""
@@ -31,8 +31,8 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      this.props.loggedIn ? (
-        <Redirect to="/"/>
+      this.props.signedIn ? (
+        <Redirect to="/users"/>
       ) : (
         <div>
           {(this.props.errors.length > 0) ? (
@@ -68,13 +68,13 @@ class LoginForm extends React.Component {
 
 function mapStateToProps(state) {
   return ({
-    loggedIn: state.users.loggedIn,
+    signedIn: state.users.loggedIn,
     errors: state.users.errors,
   })
 }
 
 function mapDispatchToProps(dispatch) {
-  return { log_in: ((username, password) => { dispatch(post_login(username, password)) }) }
+  return { logIn: ((username, password) => { dispatch(post_login(username, password)) }) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
