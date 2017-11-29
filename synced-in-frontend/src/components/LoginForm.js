@@ -1,6 +1,9 @@
 import React from 'react';
 import { Redirect, Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+
+import { post_login } from '../actions/userActions.js'
 
 class LoginForm extends React.Component {
 
@@ -41,7 +44,7 @@ class LoginForm extends React.Component {
             <Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
               <Grid.Column style={{ maxWidth: 450 }}>
                 <Header as='h2' color='blue' textAlign='center'>
-                  Log-in to your account
+                  Login to your account
                 </Header>
                 <Form size='large'>
                   <Segment stacked>
@@ -63,4 +66,15 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm
+function mapStateToProps(state) {
+  return ({
+    loggedIn: state.users.loggedIn,
+    errors: state.users.errors,
+  })
+}
+
+function mapDispatchToProps(dispatch) {
+  return { log_in: ((username, password) => { dispatch(post_login(username, password)) }) }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

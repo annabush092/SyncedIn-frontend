@@ -1,10 +1,9 @@
 import React from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import NavBar from '../NavBar.js'
 import UserList from './UserList.js'
-import Profile from './Profile.js'
 
 class UsersContainer extends React.Component {
   render() {
@@ -13,20 +12,7 @@ class UsersContainer extends React.Component {
         <div>
           <NavBar/>
           <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
-            <Route
-              exact path={this.props.match.url}
-              render={()=>(<UserList allUsers={this.props.allUsers}/>)}
-            />
-            <Route
-              path={`${this.props.match.url}/:id`}
-              render={() => {
-                if(!this.props.loading) {
-                  return (<Profile/>)
-                }else {
-                  return( <p> Loading... </p>)
-                }
-              }}
-            />
+            <UserList allUsers={this.props.allUsers}/>
           </div>
         </div>
       ) : (
