@@ -29,13 +29,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path='/' render={ () => {
+        <Route exact path='/' render={ () => ({
           this.props.loggedIn ? (
-            return (<Redirect to='/posts'/>)
+            <Redirect to='/posts'/>
           ) : (
-            return (<Redirect to='/login'/>)
+            <Redirect to='/login'/>
           )
-        }}/>
+        })}/>
         <Route path="/login" component={LoginForm}/>
         <Route path='/posts' component={PostsContainer}/>
         <Route exact path="/users" component={UsersContainer}/>
