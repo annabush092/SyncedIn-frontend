@@ -15,13 +15,13 @@ class UsersContainer extends React.Component {
           <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
             <Route
               exact path={this.props.match.url}
-              render={(props)=>(<UserList {...props} allUsers={this.props.allUsers} currentUser={this.props.currentUser}/>)}
+              render={()=>(<UserList allUsers={this.props.allUsers}/>)}
             />
             <Route
               path={`${this.props.match.url}/:id`}
-              render={(props) => {
+              render={() => {
                 if(!this.props.loading) {
-                  return (<Profile {...props} allUsers={this.props.allUsers}/>)
+                  return (<Profile/>)
                 }else {
                   return( <p> Loading... </p>)
                 }
@@ -41,6 +41,7 @@ function mapStateToProps(state) {
   return ({
     allUsers: state.users.list,
     loading: state.users.loading,
+    loggedIn: state.users.loggedIn,
     currentUser: state.users.currentUser
   })
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import { Input, Icon } from 'semantic-ui-react'
 
 function UserFilter(props){
@@ -8,4 +7,4 @@ function UserFilter(props){
   )
 }
 
-export default withRouter(UserFilter)
+export default UserFilter

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Link, withRouter } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 class LoginForm extends React.Component {
@@ -63,11 +63,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withRouter(LoginForm)
-
-
-  // <form onSubmit={this.handleSubmit}>
-  //   <input type="text" placeholder="Username" onChange={this.changeUsername} value={this.state.username}/>
-  //   <input type="password" placeholder="Password" onChange={this.changePassword} value={this.state.password}/>
-  //   <input type="submit" value="Log In"/>
-  // </form>
+export default LoginForm

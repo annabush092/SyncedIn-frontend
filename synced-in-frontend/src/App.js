@@ -35,10 +35,10 @@ class App extends Component {
             )}
           </div>
         )}/>
-        <Route exact path="/login" render={(props)=>(<LoginForm {...props} log_in={this.props.log_in} errors={this.props.errors} loggedIn={this.props.loggedIn}/>)}/>
+        <Route exact path="/login" render={()=>(<LoginForm log_in={this.props.log_in} errors={this.props.errors} loggedIn={this.props.loggedIn}/>)}/>
         <Switch>
-          <Route exact path="/users/new" render={(props)=>(<NewUserForm {...props}/>)}/>
-          <Route path="/users" render={(props)=>(<UsersContainer {...props} loggedIn={this.props.loggedIn}/>)}/>
+          <Route exact path="/users/new" component={NewUserForm}/>
+          <Route path="/users" component={UsersContainer}/>
         </Switch>
       </div>
     );

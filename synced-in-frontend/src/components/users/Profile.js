@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import { connect } from 'react-redux'
 import uuid from 'uuid'
 import { Grid, Segment } from 'semantic-ui-react'
 
@@ -8,17 +9,17 @@ import UserCard from './UserCard.js'
 
 class Profile extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      user: this.props.allUsers.find((storeU) => (
-        storeU.id === parseInt(this.props.match.params.id, 10)
-      ))
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     user: this.props.allUsers.find((storeU) => (
+  //       storeU.id === parseInt(this.props.match.params.id, 10)
+  //     ))
+  //   }
+  // }
 
   renderSkills = () => (
-    this.state.user.show_skills.map((inst_skill) => (
+    this.props.currentProfile.show_skills.map((inst_skill) => (
       <Grid.Column key={uuid()}>
         <SkillCard key={uuid()} instrument={inst_skill.instrument} skills={inst_skill.skills}/>
       </Grid.Column>
@@ -26,14 +27,14 @@ class Profile extends React.Component {
   )
 
   followingList = () => (
-    this.state.user.users_i_am_following.map((u) => {
+    this.props.currentProfile.users_i_am_following.map((u) => {
       let userFromState = this.props.allUsers.find((stateU)=>(u.id === stateU.id))
       return <UserCard key={uuid()} {...userFromState}/>
     })
   )
 
   render() {
-    if(this.state.user) {
+    if(this.props.currentProfile) {
       return (
         <div key={uuid()}>
           <Grid columns='equal'>
@@ -43,7 +44,7 @@ class Profile extends React.Component {
             </Grid.Column>
             <Grid.Column>
               <Segment>
-                <h1>{this.state.user.full_name}</h1>
+                <h1>{this.props.currentProfile.full_name}</h1>
                 <Grid columns={2}>
                   {this.renderSkills()}
                 </Grid>
@@ -59,4 +60,12 @@ class Profile extends React.Component {
   }
 }
 
-export default withRouter(Profile)
+function mapStateToProps(state) {
+  let fullObj = state.users.list.find((stateU) => (stateU.id === state.users.currentProfile))
+  return {
+    currentProfile: fullObj,
+    allUsers: state.users.list
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(Profile))

@@ -51,10 +51,8 @@ class UserList extends React.Component {
 
   userCards = () => (
     this.props.allUsers.reduce((acc, user) => {
-      if(user.id !== this.props.currentUser.id){
-        if(this.filterUsers(user)) {
-          acc.push(<UserCard key={uuid()} {...user}/>)
-        }
+      if(this.filterUsers(user)) {
+        acc.push(<UserCard key={uuid()} {...user}/>)
       }
       return acc
     }, [])
@@ -72,4 +70,4 @@ class UserList extends React.Component {
   }
 }
 
-export default withRouter(UserList)
+export default UserList
