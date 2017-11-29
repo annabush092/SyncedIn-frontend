@@ -16,7 +16,7 @@ Why is my NavLink not working and rendering the url? Url changes, but the page d
 TODO:
 
 Priority:
-  fix routing for Profile
+  done - fix routing for Profile
   done - follow/unfollow button should never show up on currentUser's card
   add state and props to wireframe thingy
   add posts and tags
