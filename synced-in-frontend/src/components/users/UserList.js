@@ -1,5 +1,4 @@
 import React from 'react'
-import { withRouter } from 'react-router-dom'
 import uuid from 'uuid'
 import { Card } from 'semantic-ui-react'
 

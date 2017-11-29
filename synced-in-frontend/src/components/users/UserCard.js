@@ -26,19 +26,23 @@ class UserCard extends React.Component {
     this.props.unfollowingUser(this.props.currentUser.id, this.props.id)
   }
 
+  renderButton = () => {
+    if(this.props.id === this.props.currentUser.id) {
+      return null
+    }else if( this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.id)) ){
+      return (<Button floated='right' onClick={this.onUnfollowUser}>Unfollow</Button>)
+    }else {
+      return (<Button floated='right' onClick={this.onFollowUser}>Follow</Button>)
+    }
+  }
+
   render() {
     return(
       <Card>
         <Card.Content>
           <Card.Header>
             <Link to={`/users/${this.props.id}`}>{this.props.full_name}</Link>
-
-            {this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.id)) ? (
-              <Button floated='right' onClick={this.onUnfollowUser}>Unfollow</Button>
-            ) : (
-              <Button floated='right' onClick={this.onFollowUser}>Follow</Button>
-            )}
-
+            {this.renderButton()}
           </Card.Header>
           <Card.Description>
             <List horizontal>{this.myInstruments()}</List>
