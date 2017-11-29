@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 
 class NewUserForm extends React.Component {
   render() {
@@ -8,4 +9,4 @@ class NewUserForm extends React.Component {
   }
 }
 
-export default NewUserForm
+export default withRouter(NewUserForm)

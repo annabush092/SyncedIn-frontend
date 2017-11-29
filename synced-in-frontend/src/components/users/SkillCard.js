@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import uuid from 'uuid'
 import { List, Card } from 'semantic-ui-react'
 
@@ -34,4 +35,4 @@ class SkillCard extends React.Component {
   }
 }
 
-export default SkillCard
+export default withRouter(SkillCard)

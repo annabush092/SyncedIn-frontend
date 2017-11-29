@@ -3,7 +3,7 @@ import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 
 import LoginForm from './components/LoginForm.js'
-import UsersContainer from './components/UsersContainer.js'
+import UsersContainer from './components/users/UsersContainer.js'
 import NewUserForm from './components/NewUserForm.js'
 import {fetch_users, post_login} from './actions/userActions.js'
 import {fetch_instruments} from './actions/instrumentActions.js'
@@ -35,9 +35,9 @@ class App extends Component {
             )}
           </div>
         )}/>
-        <Route exact path="/login" render={()=>(<LoginForm log_in={this.props.log_in} errors={this.props.errors} loggedIn={this.props.loggedIn}/>)}/>
+        <Route exact path="/login" render={(props)=>(<LoginForm {...props} log_in={this.props.log_in} errors={this.props.errors} loggedIn={this.props.loggedIn}/>)}/>
         <Switch>
-          <Route exact path="/users/new" render={()=>(<NewUserForm/>)}/>
+          <Route exact path="/users/new" render={(props)=>(<NewUserForm {...props}/>)}/>
           <Route path="/users" render={(props)=>(<UsersContainer {...props} loggedIn={this.props.loggedIn}/>)}/>
         </Switch>
       </div>
