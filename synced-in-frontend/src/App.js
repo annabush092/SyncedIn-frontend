@@ -38,12 +38,12 @@ class App extends Component {
             )}
           </div>
         )}/>
-        <Route exact path="/login" component={LoginForm}/>
-        <Route exact path='/posts' component={PostsContainer}/>
-        <Route exact path="/users" component={UsersContainer}/>
+        <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, LoginForm)}/>
+        <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, PostsContainer)}/>
+        <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UsersContainer)}/>
         <Switch>
-          <Route exact path="/users/new" component={NewUserForm}/>
-          <Route path="/users/:id" component={Profile}/>
+          <Route exact path="/users/new" component={loadingPrep(this.props.signedIn, this.props.loading, NewUserForm)}/>
+          <Route path="/users/:id" component={loadingPrep(this.props.signedIn, this.props.loading, Profile)}/>
         </Switch>
       </div>
     );
@@ -52,7 +52,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return ({
-    signedIn: state.users.loggedIn
+    signedIn: state.users.loggedIn,
+    loading: state.users.loading
   })
 }
 

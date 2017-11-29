@@ -34,7 +34,7 @@ class Profile extends React.Component {
   render() {
     if(this.props.currentProfile) {
       return (
-        <div key={uuid()}>
+        <div key={uuid()} style={{paddingTop: '60px', paddingLeft: '20px'}}>
           <Grid columns='equal'>
             <Grid.Column width={5}>
               <h2>Following: </h2>
