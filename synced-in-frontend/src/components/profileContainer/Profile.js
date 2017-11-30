@@ -7,6 +7,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 import SkillCard from './SkillCard.js'
 import UserCard from '../userListContainer/UserCard.js'
 import PostCard from '../postsContainer/PostCard.js'
+import FollowButton from '../reusables/FollowButton.js'
 import { stopRedirectToProfile } from '../../actions/userActions.js'
 
 class Profile extends React.Component {
@@ -53,6 +54,7 @@ class Profile extends React.Component {
             <Grid.Column>
               <Segment>
                 <h1>{this.props.currentProfile.full_name}</h1>
+                <FollowButton userId={this.props.currentProfile.id}/>
                 <Grid columns={2}>
                   {this.renderSkills()}
                 </Grid>

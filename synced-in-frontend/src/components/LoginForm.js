@@ -9,7 +9,7 @@ class LoginForm extends React.Component {
 
   state = {
     username: "annabush092@gmail.com",
-    password: ""
+    password: "a"
   }
 
   changeUsername = (ev) => {

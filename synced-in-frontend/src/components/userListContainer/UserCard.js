@@ -2,9 +2,10 @@ import React from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
-import { Card, List, Button } from 'semantic-ui-react'
+import { Card, List } from 'semantic-ui-react'
 
-import { followUser, unfollowUser, changeProfile, redirectToProfile } from '../../actions/userActions.js'
+import { changeProfile, redirectToProfile } from '../../actions/userActions.js'
+import FollowButton from '../reusables/FollowButton.js'
 
 class UserCard extends React.Component {
 
@@ -17,24 +18,6 @@ class UserCard extends React.Component {
       </List.Item>
     ))
   )
-
-  onFollowUser = () => {
-    this.props.followingUser(this.props.currentUser.id, this.props.id)
-  }
-
-  onUnfollowUser = () => {
-    this.props.unfollowingUser(this.props.currentUser.id, this.props.id)
-  }
-
-  renderButton = () => {
-    if(this.props.id === this.props.currentUser.id) {
-      return null
-    }else if( this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.id)) ){
-      return (<Button floated='right' onClick={this.onUnfollowUser}>Unfollow</Button>)
-    }else {
-      return (<Button floated='right' onClick={this.onFollowUser}>Follow</Button>)
-    }
-  }
 
   onNameClick = () => {
     this.props.changeCurrentProfile(this.props.id)
@@ -52,7 +35,7 @@ class UserCard extends React.Component {
             {this.props.loadNewProfile ? (
               <Redirect to={`/users/${this.props.id}`}/>
             ) : (null) }
-            {this.renderButton()}
+            <FollowButton userId={this.props.id}/>
           </Card.Header>
           <Card.Description>
             <List horizontal>{this.myInstruments()}</List>
@@ -65,15 +48,12 @@ class UserCard extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.users.currentUser,
     loadNewProfile: state.users.loadProfile
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    followingUser: (currentUserId, followId) => {dispatch(followUser(currentUserId, followId))},
-    unfollowingUser: (currentUserId, followId) => {dispatch(unfollowUser(currentUserId, followId))},
     changeCurrentProfile: (userId) => { dispatch(changeProfile(userId)) },
     redirectingToProfile: () => { dispatch(redirectToProfile()) }
   }
