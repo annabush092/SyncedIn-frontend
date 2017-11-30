@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-import {fetch_users} from './actions/userActions.js'
+import {fetch_users, newSession} from './actions/userActions.js'
 import {fetch_instruments} from './actions/instrumentActions.js'
 import {fetch_genres} from './actions/genreActions.js'
 import {fetch_families} from './actions/familyActions.js'
@@ -24,6 +24,9 @@ class App extends Component {
     this.props.get_genres()
     this.props.get_posts()
     this.props.get_tags()
+    if(localStorage.getItem("annasjwt")){
+      this.props.startSession()
+    }
   }
 
   render() {
@@ -45,7 +48,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return ({
     signedIn: state.users.loggedIn,
-    loading: state.users.loading
+    loading: state.loading.count
   })
 }
 
@@ -56,7 +59,8 @@ function mapDispatchToProps(dispatch) {
     get_families: ( () => {dispatch(fetch_families())} ),
     get_genres: ( () => {dispatch(fetch_genres())} ),
     get_posts: ( () => {dispatch(fetch_posts())} ),
-    get_tags: ( () => {dispatch(fetch_tags())} )
+    get_tags: ( () => {dispatch(fetch_tags())} ),
+    startSession: ( () => {dispatch(newSession())} )
   })
 }
 

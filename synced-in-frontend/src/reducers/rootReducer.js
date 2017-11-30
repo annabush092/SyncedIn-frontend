@@ -8,6 +8,7 @@ import {instrumentReducer} from './instrumentReducer.js'
 import {userReducer} from './userReducer.js'
 import {postReducer} from './postReducer.js'
 import {tagReducer} from './tagReducer.js'
+import {loadingReducer} from './loadingReducer.js'
 
 const rootReducer = combineReducers({
   users: userReducer,
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   genres: genreReducer,
   instruments: instrumentReducer,
   posts: postReducer,
-  tags: tagReducer
+  tags: tagReducer,
+  loading: loadingReducer
 })
 
 export const store = createStore(
