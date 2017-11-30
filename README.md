@@ -29,6 +29,8 @@ Not priority:
 Refactoring not priority:
   Make an adapter file for all fetch actions
   Make readme's good- tell how to run/install, and exactly what the API returns for different requests
+  Refactor so Profile renders a specifically filtered UserList (for following) and PostList
+  Worth it to disconnect UserCard/PostCard from the store? Is it slowing me down at all?
 
 /*
 Random stretch features:

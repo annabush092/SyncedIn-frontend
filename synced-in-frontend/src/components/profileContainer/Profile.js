@@ -6,6 +6,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 import SkillCard from './SkillCard.js'
 import UserCard from '../userListContainer/UserCard.js'
+import PostCard from '../postsContainer/PostCard.js'
 import { stopRedirectToProfile } from '../../actions/userActions.js'
 
 class Profile extends React.Component {
@@ -31,6 +32,15 @@ class Profile extends React.Component {
     })
   )
 
+  postList = () => (
+    this.props.allPosts.reduce((acc, post)=>{
+      if(post.user_id===this.props.currentProfile.id){
+        acc.push(<PostCard key={uuid()} {...post} />)
+      }
+      return acc
+    }, [])
+  )
+
   render() {
     if(this.props.currentProfile) {
       return (
@@ -47,6 +57,7 @@ class Profile extends React.Component {
                   {this.renderSkills()}
                 </Grid>
               </Segment>
+              {this.postList()}
             </Grid.Column>
           </Grid>
         </div>
@@ -63,6 +74,7 @@ function mapStateToProps(state) {
   return {
     currentProfile: fullObj,
     allUsers: state.users.list,
+    allPosts: state.posts,
     redirecting: state.users.loadProfile
   }
 }
