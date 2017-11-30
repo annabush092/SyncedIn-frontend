@@ -11,7 +11,7 @@ import {fetch_tags} from './actions/tagActions.js'
 import {loadingPrep} from './components/navBarContainer/loadingPrep.js'
 import LoginForm from './components/LoginForm.js'
 import NewUserForm from './components/NewUserForm.js'
-import PostsContainer from './components/postsContainer/PostsContainer.js'
+import PostList from './components/postsContainer/PostList.js'
 import UserList from './components/userListContainer/UserList.js'
 import Profile from './components/profileContainer/Profile.js'
 
@@ -31,7 +31,7 @@ class App extends Component {
       <div>
         <Route exact path="/" render={()=>(<Redirect to='/users'/>)}/>
         <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, LoginForm)}/>
-        <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, PostsContainer)}/>
+        <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, PostList)}/>
         <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UserList)}/>
         <Switch>
           <Route exact path="/users/new" component={loadingPrep(this.props.signedIn, this.props.loading, NewUserForm)}/>

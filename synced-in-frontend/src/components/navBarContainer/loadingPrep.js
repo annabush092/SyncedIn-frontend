@@ -26,7 +26,7 @@ export function loadingPrep(loggedIn, loading, ComponentArg) {
     signedIn = () => {
       if(this.props.location.pathname.includes("/login") || this.props.location.pathname.includes("/users/new")) {
         if(loggedIn) {
-          return (<Redirect to='/users'/>)
+          return (<Redirect to='/posts'/>)
         }else {
           return this.loaded()
         }

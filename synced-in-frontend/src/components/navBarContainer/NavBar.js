@@ -32,6 +32,13 @@ class NavBar extends React.Component {
           <Menu.Menu position='right'>
             <Menu.Item>
               <NavLink
+                to='/posts'
+                exact
+                style={this.linkStyle()}
+              > Home </NavLink>
+            </Menu.Item>
+            <Menu.Item>
+              <NavLink
                 to='/users'
                 exact
                 style={this.linkStyle()}
