@@ -10,9 +10,9 @@ component structure: see googledoc
 TODO:
 
 Priority:
-  add posts and tags
+  done - add posts and tags
   Add follow/unfollow button to profile- maybe make the button its own component...
-  JWT auth
+  done - JWT auth
   have JWT auth control the rest of the fetch requests in App
 
 Not priority:
