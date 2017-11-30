@@ -11,9 +11,8 @@ TODO:
 
 Priority:
   done - add posts and tags
-  Add follow/unfollow button to profile- maybe make the button its own component...
+  done - Add follow/unfollow button to profile- maybe make the button its own component...
   done - JWT auth
-  have JWT auth control the rest of the fetch requests in App
 
 Not priority:
   after JWT - allow users to edit their profile - think of a good way to approach this
@@ -28,6 +27,7 @@ Not priority:
 
 
 Refactoring not priority:
+  have JWT auth control the rest of the fetch requests in App
   Make an adapter file for all fetch actions
   Move login actions to their own file
   Make readme's good- tell how to run/install, and exactly what the API returns for different requests

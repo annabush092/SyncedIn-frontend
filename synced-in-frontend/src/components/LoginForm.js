@@ -69,7 +69,8 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return { logIn: ((username, password) => { dispatch(post_login(username, password)) }) }
+  return { 
+    logIn: ((username, password) => { dispatch(post_login(username, password)) }) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

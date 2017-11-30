@@ -14,8 +14,7 @@ export function userReducer(state={
       }
       return {...state, errors: state.errors.concat(newErrors)}
     case "INITIALIZE_USERS":
-      return {...state, list: state.list.concat(action.payload)}
-      //action.payload should be an array of user objects
+      return {...state, list: action.payload}
     case "LOG_IN":
       return {...state, currentUser: action.payload, loggedIn: true, errors: []}
     case "LOGOUT":

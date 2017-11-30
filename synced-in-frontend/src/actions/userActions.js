@@ -82,6 +82,35 @@ export function logout() {
   return {type: "LOGOUT"}
 }
 
+export function postNewUser(userObj) {
+  return function(dispatch) {
+    dispatch(fetching())
+    fetch('http://localhost:3000/api/v1/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: userObj.username,
+        password: userObj.password,
+        first_name: userObj.firstName,
+        last_name: userObj.lastName
+      })
+    })
+    .then(res=>res.json())
+    .then(json=>{
+      if(json.jwt) {
+        localStorage.setItem("annasjwt", json.jwt)
+        dispatch(newSession())
+        dispatch(fetch_users())
+      } else {
+        dispatch(fetchError(json.errors))
+      }
+      dispatch(doneFetching())
+    })
+  }
+}
+
 function updateUser(json) {
   return {type: "UPDATE_USER", payload: json}
 }
