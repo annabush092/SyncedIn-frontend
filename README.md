@@ -31,9 +31,12 @@ Refactoring not priority:
   Make readme's good- tell how to run/install, and exactly what the API returns for different requests
   Refactor so Profile renders a specifically filtered UserList (for following) and PostList
   Worth it to disconnect UserCard/PostCard from the store? Is it slowing me down at all?
+  Protect params in backend (require/permit)
 
 /*
 Random stretch features:
+
+  Add instrument families to search users filter
 
   Incorporate equipment- if someone plays the bass clarinet, do they have one? Especially important for percussion
 
