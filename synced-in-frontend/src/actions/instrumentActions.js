@@ -1,13 +1,7 @@
+import { fetching, doneFetching } from './loadingActions.js'
+
 function initialize_instruments(instrument_arr) {
   return {type: "INITIALIZE_INSTRUMENTS", payload: instrument_arr}
-}
-
-function fetching() {
-  return {type: "FETCHING"}
-}
-
-function doneFetching() {
-  return {type: "DONE_FETCHING"}
 }
 
 export function fetch_instruments() {

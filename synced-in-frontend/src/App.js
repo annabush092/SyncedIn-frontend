@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" render={()=>(<Redirect to='/users'/>)}/>
+        <Route exact path="/" render={()=>(<Redirect to='/posts'/>)}/>
         <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, LoginForm)}/>
         <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, PostList)}/>
         <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UserList)}/>

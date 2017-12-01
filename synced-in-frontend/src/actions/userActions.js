@@ -1,10 +1,4 @@
-function fetching() {
-  return {type: "FETCHING"}
-}
-
-function doneFetching() {
-  return {type: "DONE_FETCHING"}
-}
+import { fetching, doneFetching } from './loadingActions.js'
 
 function fetchError(errorArr) {
   return {type: "FETCH_ERROR", payload: errorArr}

@@ -1,13 +1,7 @@
+import { fetching, doneFetching } from './loadingActions.js'
+
 function initialize_families(family_arr) {
   return {type: "INITIALIZE_FAMILIES", payload: family_arr}
-}
-
-function fetching() {
-  return {type: "FETCHING"}
-}
-
-function doneFetching() {
-  return {type: "DONE_FETCHING"}
 }
 
 export function fetch_families() {

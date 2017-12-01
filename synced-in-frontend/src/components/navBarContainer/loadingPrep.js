@@ -10,16 +10,7 @@ export function loadingPrep(loggedIn, loading, ComponentArg) {
       if(loading > 0) {
         return ( <h1>Loading...</h1> )
       }else {
-        if(loggedIn) {
-          return (
-            <div>
-              <NavBar/>
-              <ComponentArg/>
-            </div>
-          )
-        }else {
-          return ( <ComponentArg/> )
-        }
+        return this.signedIn()
       }
     }
 
@@ -28,19 +19,24 @@ export function loadingPrep(loggedIn, loading, ComponentArg) {
         if(loggedIn) {
           return (<Redirect to='/posts'/>)
         }else {
-          return this.loaded()
+          return ( <ComponentArg/> )
         }
       }else {
-        if(!loggedIn) {
+        if( !loggedIn && !(localStorage.getItem("annasjwt")) ) {
           return (<Redirect to="/login"/>)
         }else {
-          return this.loaded()
+          return (
+            <div>
+              <NavBar/>
+              <ComponentArg/>
+            </div>
+          )
         }
       }
     }
 
     render() {
-      return( this.signedIn() )
+      return( this.loaded() )
     }
   }
 }

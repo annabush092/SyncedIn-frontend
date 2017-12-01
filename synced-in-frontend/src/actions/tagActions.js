@@ -1,13 +1,7 @@
+import { fetching, doneFetching } from './loadingActions.js'
+
 function initialize_tags(tag_arr) {
   return {type: "INITIALIZE_TAGS", payload: tag_arr}
-}
-
-function fetching() {
-  return {type: "FETCHING"}
-}
-
-function doneFetching() {
-  return {type: "DONE_FETCHING"}
 }
 
 export function fetch_tags() {

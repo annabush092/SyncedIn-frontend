@@ -12,6 +12,7 @@ TODO:
 Priority:
   done - refactor backend auth so JWT secret is only in the concerns file
   done - allow users to edit their profile - think of a good way to approach this
+  done - When you type in a route in the url, it does not go there- it instead just reroutes based on loadingPrep...
 
 Not priority:
 
@@ -19,8 +20,6 @@ Not priority:
 
   Make an adapter file for all fetch actions
   Move login actions to their own file
-
-  When you type in a route in the url, it does not go there- it instead just reroutes based on loadingPrep...
 
   Expand users so they have more information in backend
   Expand NewUserForm and EditUserForm so they're more comprehensive.
