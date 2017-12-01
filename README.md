@@ -11,29 +11,35 @@ TODO:
 
 Priority:
   done - refactor backend auth so JWT secret is only in the concerns file
-  allow users to edit their profile - think of a good way to approach this
+  done - allow users to edit their profile - think of a good way to approach this
 
 Not priority:
 
   Formatting!
 
+  Make an adapter file for all fetch actions
+  Move login actions to their own file
+
+  When you type in a route in the url, it does not go there- it instead just reroutes based on loadingPrep...
+
   Expand users so they have more information in backend
   Expand NewUserForm and EditUserForm so they're more comprehensive.
 
-  Why does it take so long to follow/unfollow on the front-end? Can it not make the entire screen blink? (optimistic render)
-  When a user follows another user, update both in the frontend (currently only the currentUser is updated in the frontend, even though both are updated in the backend- to see the full updates, you need to refresh the entire site)
-
   Catch error in frontend if server is down and sends any response besides 200...
 
-
-Refactoring not priority:
   have JWT auth control the rest of the fetch requests in App
-  Make an adapter file for all fetch actions
-  Move login actions to their own file
+
+  When making an update in the backend (follow/unfollow, update, make new user), instead of re-fetching the user.list to update the store, do something less costly...
+
+Very not priority:
+  Why does it take so long to follow/unfollow on the front-end? Can it not make the entire screen blink? (optimistic render)
   Make readme's good- tell how to run/install, and exactly what the API returns for different requests
   Refactor so Profile renders a specifically filtered UserList (for following) and PostList
   Worth it to disconnect UserCard/PostCard from the store? Is it slowing me down at all?
   Protect params in backend (require/permit)
+  Make the user interface to change password more secure (have them type it twice)
+  Make users enter their password to verify before making any changes to their profile.
+  Also allow a user to change their password
 
 /*
 Random stretch features:

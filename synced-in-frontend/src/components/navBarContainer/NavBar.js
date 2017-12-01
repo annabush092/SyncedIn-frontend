@@ -51,6 +51,13 @@ class NavBar extends React.Component {
               ) : (null) }
             </Menu.Item>
             <Menu.Item>
+              <NavLink
+                to={`/users/${this.props.currentUser.id}/edit`}
+                exact
+                style={this.linkStyle()}
+              > Edit Profile </NavLink>
+            </Menu.Item>
+            <Menu.Item>
               <Button onClick={this.onLogout}>Log out</Button>
             </Menu.Item>
           </Menu.Menu>

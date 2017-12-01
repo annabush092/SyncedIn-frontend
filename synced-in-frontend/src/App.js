@@ -14,6 +14,7 @@ import NewUserForm from './components/NewUserForm.js'
 import PostList from './components/postsContainer/PostList.js'
 import UserList from './components/userListContainer/UserList.js'
 import Profile from './components/profileContainer/Profile.js'
+import EditUserForm from './components/EditUserForm.js'
 
 class App extends Component {
 
@@ -38,7 +39,8 @@ class App extends Component {
         <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UserList)}/>
         <Switch>
           <Route exact path="/users/new" component={loadingPrep(this.props.signedIn, this.props.loading, NewUserForm)}/>
-          <Route path="/users/:id" component={loadingPrep(this.props.signedIn, this.props.loading, Profile)}/>
+          <Route exact path="/users/:id/edit" component={loadingPrep(this.props.signedIn, this.props.loading, EditUserForm)}/>
+          <Route exact path="/users/:id" component={loadingPrep(this.props.signedIn, this.props.loading, Profile)}/>
         </Switch>
       </div>
     );
