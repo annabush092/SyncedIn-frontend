@@ -59,7 +59,7 @@ export function post_login(username, password) {
 export function newSession() {
   return function(dispatch) {
     dispatch(fetching())
-    fetch('http://localhost:3000/api/v1/finduser', {
+    fetch('http://localhost:3000/api/v1/authentications', {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${localStorage.getItem("annasjwt")}`

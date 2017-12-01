@@ -10,15 +10,15 @@ component structure: see googledoc
 TODO:
 
 Priority:
-  done - add posts and tags
-  done - Add follow/unfollow button to profile- maybe make the button its own component...
-  done - JWT auth
+  done - refactor backend auth so JWT secret is only in the concerns file
+  allow users to edit their profile - think of a good way to approach this
 
 Not priority:
-  after JWT - allow users to edit their profile - think of a good way to approach this
-  after JWT - NewUserForm
 
   Formatting!
+
+  Expand users so they have more information in backend
+  Expand NewUserForm and EditUserForm so they're more comprehensive.
 
   Why does it take so long to follow/unfollow on the front-end? Can it not make the entire screen blink? (optimistic render)
   When a user follows another user, update both in the frontend (currently only the currentUser is updated in the frontend, even though both are updated in the backend- to see the full updates, you need to refresh the entire site)
