@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("errors: ", this.props.errors)
     return (
       <div>
         <Route exact path="/" render={()=>(<Redirect to='/posts'/>)}/>
@@ -50,7 +51,8 @@ class App extends Component {
 function mapStateToProps(state) {
   return ({
     signedIn: state.users.loggedIn,
-    loading: state.loading.count
+    loading: state.loading.count,
+    errors: state.users.errors
   })
 }
 

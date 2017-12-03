@@ -1,4 +1,4 @@
-import { fetching, doneFetching } from './loadingActions.js'
+import { fetching, doneFetching, checkForErrors } from './loadingActions.js'
 
 function initialize_families(family_arr) {
   return {type: "INITIALIZE_FAMILIES", payload: family_arr}
@@ -10,7 +10,7 @@ export function fetch_families() {
     fetch('http://localhost:3000/api/v1/families')
     .then(res => res.json())
     .then(json => {
-      dispatch(initialize_families(json))
+      dispatch(checkForErrors(json, initialize_families))
       dispatch(doneFetching())
     })
   }

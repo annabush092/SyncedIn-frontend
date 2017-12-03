@@ -1,9 +1,4 @@
-import { fetching, doneFetching } from './loadingActions.js'
-
-function fetchError(errorArr) {
-  return {type: "FETCH_ERROR", payload: errorArr}
-}
-
+import { fetching, doneFetching, checkForErrors } from './loadingActions.js'
 
 
 function initialize_users(user_arr) {
@@ -16,7 +11,7 @@ export function fetch_users() {
     fetch('http://localhost:3000/api/v1/users')
     .then(res => res.json())
     .then(json => {
-      dispatch(initialize_users(json))
+      dispatch(checkForErrors(json, initialize_users))
       dispatch(doneFetching())
     })
   }
@@ -45,10 +40,8 @@ export function post_login(username, password) {
     .then(json => {
       if(json.jwt) {
         localStorage.setItem("annasjwt", json.jwt)
-        dispatch(newSession())
-      } else {
-        dispatch(fetchError(json.errors))
       }
+      dispatch(checkForErrors(json, newSession))
       dispatch(doneFetching())
     })
   }
@@ -65,11 +58,7 @@ export function newSession() {
     })
     .then(res=>res.json())
     .then(json => {
-      if(json.username) {
-        dispatch(log_in(json))
-      } else {
-        dispatch(fetchError(json.errors))
-      }
+      dispatch(checkForErrors(json, log_in))
       dispatch(doneFetching())
     })
   }
@@ -99,11 +88,9 @@ export function postNewUser(userObj) {
     .then(json=>{
       if(json.jwt) {
         localStorage.setItem("annasjwt", json.jwt)
-        dispatch(newSession())
-        dispatch(fetch_users())
-      } else {
-        dispatch(fetchError(json.errors))
       }
+      dispatch(checkForErrors(json, newSession))
+      dispatch(fetch_users())
       dispatch(doneFetching())
     })
   }
@@ -132,12 +119,8 @@ export function editUser(userObj) {
     })
     .then(res => res.json())
     .then(json => {
-      if(json.username) {
-        dispatch(updateUser(json))
-        dispatch(fetch_users())
-      }else{
-        dispatch(fetchError(json.errors))
-      }
+      dispatch(checkForErrors(json, updateUser))
+      dispatch(fetch_users())
       dispatch(doneFetching())
     })
   }
@@ -158,12 +141,8 @@ export function followUser(currentUserId, followId) {
     })
     .then(res => res.json())
     .then(json => {
-      if(json.username) {
-        dispatch(updateUser(json))
-        dispatch(fetch_users())
-      }else{
-        dispatch(fetchError(json.errors))
-      }
+      dispatch(checkForErrors(json, updateUser))
+      dispatch(fetch_users())
       dispatch(doneFetching())
     })
   }
@@ -184,12 +163,8 @@ export function unfollowUser(currentUserId, followId) {
     })
     .then(res => res.json())
     .then(json => {
-      if(json.username) {
-        dispatch(updateUser(json))
-        dispatch(fetch_users())
-      }else{
-        dispatch(fetchError(json.errors))
-      }
+      dispatch(checkForErrors(json, updateUser))
+      dispatch(fetch_users())
       dispatch(doneFetching())
     })
   }

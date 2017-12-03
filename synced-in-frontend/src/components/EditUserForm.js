@@ -42,7 +42,6 @@ class NewUserForm extends React.Component {
   }
 
   render() {
-    console.log(this.state.redirecting)
     return (
       <div>
         {(this.props.errors.length > 0) ? (
