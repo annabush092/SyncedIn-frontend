@@ -5,13 +5,16 @@ import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
 import { postNewUser } from '../actions/userActions.js'
 
+import AddInstrumentForm from './reusables/AddInstrumentForm.js'
+
 class NewUserForm extends React.Component {
 
   state = {
     firstName: "",
     lastName: "",
     username: "",
-    password: ""
+    password: "",
+    myInstruments: []
   }
 
   changeFirstName = (ev) => {
@@ -30,19 +33,18 @@ class NewUserForm extends React.Component {
     this.setState({password: ev.target.value})
   }
 
+  changeMyInstruments = (instList) => {
+    this.setState({ myInstruments: instList})
+  }
+
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.newUser({
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       username: this.state.username,
-      password: this.state.password
-    })
-    this.setState({
-      firstName: "",
-      lastName: "",
-      username: "",
-      password: ""
+      password: this.state.password,
+      instrumentIds: this.state.myInstruments.map(i=>(i.id))
     })
   }
 
@@ -66,6 +68,7 @@ class NewUserForm extends React.Component {
                   <Form.Input fluid placeholder='Last Name' onChange={this.changeLastName} value={this.state.lastName}/>
                   <Form.Input fluid placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
                   <Form.Input fluid type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
+                  <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments}/>
                   <Button color='blue' fluid size='large' type='submit' onClick={this.handleSubmit}>Sign Up</Button>
                 </Segment>
               </Form>

@@ -81,7 +81,8 @@ export function postNewUser(userObj) {
         username: userObj.username,
         password: userObj.password,
         first_name: userObj.firstName,
-        last_name: userObj.lastName
+        last_name: userObj.lastName,
+        instrument_ids: userObj.instrumentIds
       })
     })
     .then(res=>res.json())
