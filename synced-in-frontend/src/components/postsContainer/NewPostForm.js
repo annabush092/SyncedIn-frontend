@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import uuid from 'uuid'
 import { Form, Button, Dropdown } from 'semantic-ui-react'
+
+import {persistPost} from '../../actions/postActions.js'
 
 class NewPostForm extends React.Component {
 
@@ -47,4 +50,16 @@ class NewPostForm extends React.Component {
   }
 }
 
-export default NewPostForm
+function mapStateToProps(state) {
+  return ({
+    allTags: state.tags
+  })
+}
+
+function mapDispatchToProps(dispatch) {
+  return ({
+    publishPost: (postObj) => { dispatch(persistPost(postObj)) }
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPostForm)

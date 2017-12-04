@@ -7,6 +7,7 @@ import { Grid, Segment } from 'semantic-ui-react'
 import SkillCard from './SkillCard.js'
 import UserCard from '../userListContainer/UserCard.js'
 import PostCard from '../postsContainer/PostCard.js'
+import NewPostForm from '../postsContainer/NewPostForm.js'
 import FollowButton from '../reusables/FollowButton.js'
 import { stopRedirectToProfile } from '../../actions/userActions.js'
 
@@ -59,6 +60,7 @@ class Profile extends React.Component {
                   {this.renderSkills()}
                 </Grid>
               </Segment>
+              <NewPostForm/>
               {this.postList()}
             </Grid.Column>
           </Grid>

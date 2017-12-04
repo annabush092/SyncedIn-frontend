@@ -14,9 +14,12 @@ Priority:
 
   When you re-load a profile page, it gets messed up (same problem)- try putting the profile state check in App instead of where it is...
 
-  Add instruments to the edit profile page.
+  done - Add instruments to the edit profile page.
+  done - Users can add posts with tags
 
   Formatting!
+
+  Add time stamps to posts so they're displayed newest on the top
 
 Not priority:
 
