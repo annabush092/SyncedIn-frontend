@@ -114,7 +114,8 @@ export function editUser(userObj) {
       body: JSON.stringify({
         username: userObj.username,
         first_name: userObj.firstName,
-        last_name: userObj.lastName
+        last_name: userObj.lastName,
+        instrument_ids: userObj.instrumentIds
       })
     })
     .then(res => res.json())
