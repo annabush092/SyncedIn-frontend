@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 
+import {appStyle} from './app-style.js'
+
 import {fetch_users, newSession} from './actions/userActions.js'
 import {fetch_instruments} from './actions/instrumentActions.js'
 import {fetch_genres} from './actions/genreActions.js'
@@ -33,7 +35,7 @@ class App extends Component {
   render() {
     console.log("errors: ", this.props.errors)
     return (
-      <div>
+      <div style={appStyle()}>
         <Route exact path="/" render={()=>(<Redirect to='/posts'/>)}/>
         <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, LoginForm)}/>
         <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, PostList)}/>
