@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 import uuid from 'uuid'
 import { Card } from 'semantic-ui-react'
 
+import {persistPost} from '../../actions/postActions.js'
+
+import NewPostForm from './NewPostForm.js'
 import PostCard from './PostCard.js'
 import Filter from '../reusables/Filter.js'
 
@@ -31,7 +34,10 @@ class PostList extends React.Component {
 
   postCards = () => (
     this.props.allPosts.reduce((acc, post) => {
-      if(this.filterPosts(post)) {
+      if(this.state.currentFilter.length < 1) {
+        acc.push(<PostCard key={uuid()} {...post}/>)
+      }
+      else if(this.filterPosts(post)) {
         acc.push(<PostCard key={uuid()} {...post}/>)
       }
       return acc
@@ -41,6 +47,7 @@ class PostList extends React.Component {
   render() {
     return(
       <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
+        <NewPostForm publishPost={this.props.publishPost} allTags={this.props.allTags}/>
         <Filter handleInput={this.handleInput}/>
         <Card.Group style={{paddingTop: '30px'}}>
           {this.postCards()}
@@ -52,8 +59,15 @@ class PostList extends React.Component {
 
 function mapStateToProps(state) {
   return ({
-    allPosts: state.posts
+    allPosts: state.posts,
+    allTags: state.tags
   })
 }
 
-export default withRouter(connect(mapStateToProps)(PostList));
+function mapDispatchToProps(dispatch) {
+  return ({
+    publishPost: (postObj) => { dispatch(persistPost(postObj)) }
+  })
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostList));

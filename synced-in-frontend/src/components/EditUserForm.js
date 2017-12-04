@@ -112,7 +112,6 @@ class NewUserForm extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         {(this.props.errors.length > 0) ? (
