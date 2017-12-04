@@ -42,6 +42,7 @@ class NewUserForm extends React.Component {
   }
 
   render() {
+    console.log("in edit user: ", this.props)
     return (
       <div>
         {(this.props.errors.length > 0) ? (
@@ -76,7 +77,9 @@ function mapStateToProps(state) {
   return ({
     errors: state.users.errors,
     currentUser: state.users.currentUser,
-    loadNewProfile: state.users.loadProfile
+    loadNewProfile: state.users.loadProfile,
+    allInstruments: state.instruments,
+    allFamilies: state.families
   })
 }
 

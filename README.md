@@ -10,20 +10,17 @@ component structure: see googledoc
 TODO:
 
 Priority:
-  done - refactor backend auth so JWT secret is only in the concerns file
-  done - allow users to edit their profile - think of a good way to approach this
-  done - When you type in a route in the url, it does not go there- it instead just reroutes based on loadingPrep...
-
   Move error state into the loadingReducer instead of the userReducer
-  Find a way to display the error state in App if anything goes wrong. Modal?
 
   When you re-load a profile page, it gets messed up (same problem)- try putting the profile state check in App instead of where it is...
 
   Add instruments to the edit profile page.
 
+  Formatting!
+
 Not priority:
 
-  Formatting!
+  Find a way to display the error state in App if anything goes wrong. Something like github errors?
 
   Make an adapter file for all fetch actions
   Move login actions to their own file

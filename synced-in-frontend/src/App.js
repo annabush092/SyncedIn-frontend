@@ -35,13 +35,13 @@ class App extends Component {
     return (
       <div>
         <Route exact path="/" render={()=>(<Redirect to='/posts'/>)}/>
-        <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, LoginForm)}/>
-        <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, PostList)}/>
-        <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, UserList)}/>
+        <Route exact path="/login" component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, LoginForm)}/>
+        <Route exact path='/posts' component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, PostList)}/>
+        <Route exact path="/users" component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, UserList)}/>
         <Switch>
-          <Route exact path="/users/new" component={loadingPrep(this.props.signedIn, this.props.loading, NewUserForm)}/>
-          <Route exact path="/users/:id/edit" component={loadingPrep(this.props.signedIn, this.props.loading, EditUserForm)}/>
-          <Route exact path="/users/:id" component={loadingPrep(this.props.signedIn, this.props.loading, Profile)}/>
+          <Route exact path="/users/new" component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, NewUserForm)}/>
+          <Route exact path="/users/:id/edit" component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, EditUserForm)}/>
+          <Route exact path="/users/:id" component={loadingPrep(this.props.signedIn, this.props.loading, this.props.allUsers, Profile)}/>
         </Switch>
       </div>
     );
@@ -52,7 +52,8 @@ function mapStateToProps(state) {
   return ({
     signedIn: state.users.loggedIn,
     loading: state.loading.count,
-    errors: state.users.errors
+    errors: state.users.errors,
+    allUsers: state.users.list
   })
 }
 

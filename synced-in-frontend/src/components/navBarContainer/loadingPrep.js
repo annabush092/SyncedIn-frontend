@@ -3,11 +3,11 @@ import { Redirect } from 'react-router-dom'
 
 import NavBar from './NavBar.js'
 
-export function loadingPrep(loggedIn, loading, ComponentArg) {
+export function loadingPrep(loggedIn, loading, allUsers, ComponentArg) {
   return class extends React.Component {
 
     loaded = () => {
-      if(loading > 0) {
+      if(loading > 0 || Object.keys(allUsers).length < 1) {
         return ( <h1>Loading...</h1> )
       }else {
         return this.signedIn()
