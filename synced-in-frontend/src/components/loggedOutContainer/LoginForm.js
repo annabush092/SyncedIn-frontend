@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { outsidePadding, loginFormStyle, headerStyle, formStyle, inputStyle, textInputStyle, buttonStyle, messageStyle } from './login-form-style.js'
+import { outerFormStyle, headerStyle, formStyle, inputStyle, textInputStyle, buttonStyle, messageStyle } from '../reusables/form-style.js'
+import { outsideLoginPadding } from './login-form-style.js'
 
-import { post_login } from '../actions/userActions.js'
+import { post_login } from '../../actions/userActions.js'
 
 class LoginForm extends React.Component {
 
@@ -32,13 +33,13 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div style={outsidePadding()}>
+      <div style={outsideLoginPadding()}>
         {(this.props.errors.length > 0) ? (
           <h3>{this.props.errors}</h3>
         ) : (
           null
         )}
-        <div style={loginFormStyle()}>
+        <div style={outerFormStyle()}>
           <div style={headerStyle()}>
             Login to your account
           </div>

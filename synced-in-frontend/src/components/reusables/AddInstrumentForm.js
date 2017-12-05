@@ -1,7 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import uuid from 'uuid'
-import { Form } from 'semantic-ui-react'
+
+import { textInputStyle } from './form-style.js'
+import { headerStyle, nameInputStyle } from '../loggedOutContainer/new-user-form-style.js'
+import { dropdownStyle, checkList, checkboxStyle } from './add-instrument-style.js'
 
 class AddInstrumentForm extends React.Component {
 
@@ -66,10 +69,11 @@ class AddInstrumentForm extends React.Component {
     this.filterByFamily().reduce( (acc, i) => {
       if(i.name.toLowerCase().includes(this.state.instrumentFilter.toLowerCase())){
         acc.push(
-          <Form.Field key={uuid()}>
-            <input type="checkbox" value={i.id} checked={this.checkInstrument(i)} onChange={this.onCheckInst}/>
-            {` ${i.name}`}
-          </Form.Field>)
+          <div key={uuid()} style={checkboxStyle()}>
+            <input type="checkbox" id={i.id} value={i.id} checked={this.checkInstrument(i)} onChange={this.onCheckInst}/>
+            <label htmlFor={i.id}>{` ${i.name}`}</label>
+          </div>
+        )
       }
       return acc
     }, [] )
@@ -78,17 +82,24 @@ class AddInstrumentForm extends React.Component {
   render() {
     return (
       <div>
-        <h2>Add instruments: </h2>
-        <label>Filter by type: </label>
-        <select value={this.state.selectedFamily} onChange={this.chooseFamily}>
-          <option value={"all"}>All instruments</option>
-          <option value={"mine"}>My instruments</option>
-          {this.familyOptions()}
-        </select>
-        <label>Filter by name: </label>
-        <Form.Input fluid placeholder="Instrument" value={this.state.instrumentFilter} onChange={this.filterInst}/>
-
-        {this.renderInstruments()}
+        <div style={headerStyle()}>
+          Add instruments
+        </div>
+        <div style={nameInputStyle()}>
+          <label>Filter by type: </label><br />
+          <select style={dropdownStyle()} value={this.state.selectedFamily} onChange={this.chooseFamily}>
+            <option value={"all"}>All instruments</option>
+            <option value={"mine"}>My instruments</option>
+            {this.familyOptions()}
+          </select>
+        </div>
+        <div style={nameInputStyle()}>
+          <label>Find by name: </label><br />
+          <input style={textInputStyle()} type="text" placeholder="Instrument" value={this.state.instrumentFilter} onChange={this.filterInst}/>
+        </div>
+        <div style={checkList()}>
+          {this.renderInstruments()}
+        </div>
       </div>
     )
   }

@@ -15,7 +15,12 @@ Priority:
 
   done - Add time stamps to posts so they're displayed newest on the top
 
+  Allow users to add instruments if they are not in the list yet
+
   Expand NewUserForm and EditUserForm to add genre/skills.
+
+
+  window.scrollTo(0, 0) in componentDidMount() ensures all pages load scrolled to the top of the page
 
 
 Refactoring/fixing not priority:

@@ -1,13 +1,4 @@
-export function outsidePadding() {
-  return {
-    paddingTop: '8em',
-    background: '#262626',
-    width: '100vw',
-    height: '100vh',
-  }
-}
-
-export function loginFormStyle() {
+export function outerFormStyle() {
   return {
     position: 'relative',
     width: '50%',
@@ -41,6 +32,7 @@ export function inputStyle() {
     position: 'relative',
     left: '10%',
     marginTop: '2em',
+    cssFloat: 'left'
   }
 }
 
