@@ -1,5 +1,10 @@
 export function outsidePadding() {
-  return { paddingTop: '8em'}
+  return {
+    paddingTop: '8em',
+    background: '#262626',
+    width: '100vw',
+    height: '100vh',
+  }
 }
 
 export function loginFormStyle() {
@@ -8,13 +13,13 @@ export function loginFormStyle() {
     width: '50%',
     left: '25%',
     borderRadius: '.3em',
-    boxShadow: '0 4px 8px 0 #191515'
+    boxShadow: '0 4px 8px 0 black',
   }
 }
 
 export function headerStyle() {
   return {
-    background: '#a33238',
+    background: '#f91818ff',
     color: 'white',
     padding: '1.5em',
     textAlign: 'center',
@@ -25,8 +30,7 @@ export function headerStyle() {
 
 export function formStyle() {
   return {
-    background: 'white',
-    borderRadius: '0 0 .3em .3em',
+    background: '#f6f6f6',
     padding: '2em'
   }
 }
@@ -37,21 +41,38 @@ export function inputStyle() {
     position: 'relative',
     left: '10%',
     marginTop: '2em',
-    padding: '.5em'
   }
+}
+
+export function textInputStyle() {
+    return {
+      width: '100%',
+      padding: '.5em',
+    }
 }
 
 export function buttonStyle() {
   return {
-    marginTop: '2em',
-    marginBottom: '2em',
+    marginTop: '1.8em',
+    marginBottom: '1em',
     width: '30%',
     position: 'relative',
-    left: '35%',
+    left: '60%',
     fontSize: '1.3em',
     padding: '.5em',
-    backgroundColor: '#a33238',
+    backgroundColor: '#f91818ff',
     color: 'white',
     borderRadius: '.3em'
+  }
+}
+
+export function messageStyle() {
+  return {
+    padding: '1.2em',
+    background: '#f6f6f6',
+    borderRadius: '0 0 .3em .3em',
+    borderTop: 'solid #b2b2b2 .1em',
+    textAlign: 'center',
+    fontSize: '1.2em',
   }
 }

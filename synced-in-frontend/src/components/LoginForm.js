@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
-import { outsidePadding, loginFormStyle, headerStyle, formStyle, inputStyle, buttonStyle } from './login-form-style.js'
+import { outsidePadding, loginFormStyle, headerStyle, formStyle, inputStyle, textInputStyle, buttonStyle, messageStyle } from './login-form-style.js'
 
 import { post_login } from '../actions/userActions.js'
 
@@ -44,11 +43,20 @@ class LoginForm extends React.Component {
             Login to your account
           </div>
           <form style={formStyle()}>
-            <input style={inputStyle()} type='text' placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
-            <input style={inputStyle()} type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
-            <br />
-            <button style={buttonStyle()} color='blue' fluid size='large' type='submit' onClick={this.handleSubmit}>Login</button>
+            <div style={inputStyle()}>
+              <label>Username: </label><br />
+              <input style={textInputStyle()} type='text' placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
+            </div>
+            <div style={inputStyle()}>
+              <label>Password: </label><br />
+              <input style={textInputStyle()} type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
+            </div>
+            <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Login</button>
           </form>
+          <div style={messageStyle()}>
+            Don't have an account?
+            <Link to="/users/new">  Sign up here </Link>
+          </div>
         </div>
       </div>
     )
