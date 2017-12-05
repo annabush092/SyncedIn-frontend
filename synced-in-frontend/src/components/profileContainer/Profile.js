@@ -6,9 +6,10 @@ import { Grid, Segment } from 'semantic-ui-react'
 
 import SkillCard from './SkillCard.js'
 import UserCard from '../userListContainer/UserCard.js'
-import PostCard from '../postsContainer/PostCard.js'
 import NewPostForm from '../postsContainer/NewPostForm.js'
 import FollowButton from '../reusables/FollowButton.js'
+import { sortPosts } from '../reusables/sortPosts.js'
+
 import { stopRedirectToProfile } from '../../actions/userActions.js'
 
 class Profile extends React.Component {
@@ -34,14 +35,15 @@ class Profile extends React.Component {
     })
   )
 
-  postList = () => (
-    this.props.allPosts.reduce((acc, post)=>{
+  postList = () => {
+    let postCards = this.props.allPosts.reduce((acc, post)=>{
       if(post.user_id===this.props.currentProfile.id){
-        acc.push(<PostCard key={uuid()} {...post} />)
+        acc.push(post)
       }
       return acc
     }, [])
-  )
+    return postCards
+  }
 
   render() {
     if(this.props.currentProfile) {
@@ -61,7 +63,7 @@ class Profile extends React.Component {
                 </Grid>
               </Segment>
               <NewPostForm/>
-              {this.postList()}
+              {sortPosts(this.postList())}
             </Grid.Column>
           </Grid>
         </div>

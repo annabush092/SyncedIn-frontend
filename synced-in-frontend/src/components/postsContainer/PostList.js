@@ -1,12 +1,11 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import uuid from 'uuid'
 import { Card } from 'semantic-ui-react'
 
 import NewPostForm from './NewPostForm.js'
-import PostCard from './PostCard.js'
 import Filter from '../reusables/Filter.js'
+import {sortPosts} from '../reusables/sortPosts.js'
 
 class PostList extends React.Component {
 
@@ -33,10 +32,10 @@ class PostList extends React.Component {
   postCards = () => (
     this.props.allPosts.reduce((acc, post) => {
       if(this.state.currentFilter.length < 1) {
-        acc.push(<PostCard key={uuid()} {...post}/>)
+        acc.push(post)
       }
       else if(this.filterPosts(post)) {
-        acc.push(<PostCard key={uuid()} {...post}/>)
+        acc.push(post)
       }
       return acc
     }, [])
@@ -48,7 +47,7 @@ class PostList extends React.Component {
         <NewPostForm/>
         <Filter handleInput={this.handleInput}/>
         <Card.Group style={{paddingTop: '30px'}}>
-          {this.postCards()}
+          {sortPosts(this.postCards())}
         </Card.Group>
       </div>
     )

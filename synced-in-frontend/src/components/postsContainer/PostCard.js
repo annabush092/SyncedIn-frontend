@@ -25,6 +25,15 @@ class PostCard extends React.Component {
       ))
     )
 
+    renderTime = () => {
+      if(this.props.time_published !== "No date provided") {
+        let timeArr = this.props.time_published.split("/")
+        return `${timeArr[3]}:${timeArr[4]} ${timeArr[1]} ${timeArr[2]}, ${timeArr[0]} EST`
+      }else{
+        return null
+      }
+    }
+
     render() {
       return(
         <Card fluid>
@@ -34,6 +43,7 @@ class PostCard extends React.Component {
               {this.props.loadNewProfile ? (
                 <Redirect to={`/users/${this.props.author.id}`}/>
               ) : (null) }
+              {this.renderTime()}
             </Card.Header>
             <Card.Description>
               {this.props.content}

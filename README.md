@@ -11,12 +11,9 @@ TODO:
 
 Priority:
 
-  done - Add instruments to the new user and edit profile page.
-  done - Users can add posts with tags
-
   Formatting!
 
-  Add time stamps to posts so they're displayed newest on the top
+  done - Add time stamps to posts so they're displayed newest on the top
 
   Expand NewUserForm and EditUserForm to add genre/skills.
 
@@ -44,6 +41,8 @@ Features not priority:
   Also allow a user to change their password
 
   have JWT auth control the rest of the fetch requests in App
+
+  give posts a time converted to the user's timezone
 
 
 Stretch refactors:
