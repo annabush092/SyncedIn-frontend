@@ -5,13 +5,7 @@ import PostCard from '../postsContainer/PostCard.js'
 export function sortPosts(postList) {
   let sorted = [...postList]
   sorted.sort((a, b)=>{
-    if(a.time_published < b.time_published) {
-      return 1
-    }else if(a.time_published > b.time_published) {
-      return -1
-    }else{
-      return 0
-    }
+    return (b.time_published - a.time_published)
   })
   return sorted.map(post=>(
     <PostCard key={uuid()} {...post}/>

@@ -26,12 +26,14 @@ class PostCard extends React.Component {
     )
 
     renderTime = () => {
-      if(this.props.time_published !== "No date provided") {
-        let timeArr = this.props.time_published.split("/")
-        return `${timeArr[3]}:${timeArr[4]} ${timeArr[1]} ${timeArr[2]}, ${timeArr[0]} EST`
-      }else{
-        return null
+      const monthArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      let date = new Date(this.props.time_published)
+      let month = monthArr[date.getMonth()]
+      let minutes = date.getMinutes()
+      if(minutes<10){
+        minutes = `0${minutes}`
       }
+      return `${date.getHours()}:${minutes}, ${month} ${date.getDate()}, ${date.getFullYear()}`
     }
 
     render() {
