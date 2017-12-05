@@ -22,7 +22,9 @@ export function headerStyle() {
 export function formStyle() {
   return {
     background: '#f6f6f6',
-    padding: '2em'
+    padding: '2em',
+    display: 'block',
+    overflow: 'auto'
   }
 }
 
@@ -41,6 +43,14 @@ export function textInputStyle() {
       width: '100%',
       padding: '.5em',
     }
+}
+
+export function buttonDiv() {
+  return {
+    width: '100%',
+    position: 'relative',
+    cssFloat: 'left'
+  }
 }
 
 export function buttonStyle() {

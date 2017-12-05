@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import uuid from 'uuid'
 
 import { textInputStyle } from './form-style.js'
-import { headerStyle, nameInputStyle } from '../loggedOutContainer/new-user-form-style.js'
-import { dropdownStyle, checkList, checkboxStyle } from './add-instrument-style.js'
+import { nameInputStyle } from '../loggedOutContainer/new-user-form-style.js'
+import { instrumentHeaderStyle, dropdownStyle, checkList, checkboxStyle, newInstrumentHeader } from './add-instrument-style.js'
 
 class AddInstrumentForm extends React.Component {
 
@@ -82,7 +82,7 @@ class AddInstrumentForm extends React.Component {
   render() {
     return (
       <div>
-        <div style={headerStyle()}>
+        <div style={instrumentHeaderStyle()}>
           Add instruments
         </div>
         <div style={nameInputStyle()}>
@@ -100,6 +100,21 @@ class AddInstrumentForm extends React.Component {
         <div style={checkList()}>
           {this.renderInstruments()}
         </div>
+
+        <div style={newInstrumentHeader()}>
+          Can't find your instrument? Create a new one:
+        </div>
+        <div style={nameInputStyle()}>
+          <label>Instrument name: </label><br />
+          <input style={textInputStyle()} type="text" placeholder="New Instrument" onChange={this.props.onNewInstrument} value={this.props.newInstrument}/>
+        </div>
+        <div style={nameInputStyle()}>
+          <label>What type of instrument is it? </label><br />
+          <select style={dropdownStyle()} value={this.props.newInstrumentFam} onChange={this.props.onNewInstrumentFam}>
+            {this.familyOptions()}
+          </select>
+        </div>
+
       </div>
     )
   }

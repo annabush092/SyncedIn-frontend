@@ -1,5 +1,5 @@
 import { fetching, doneFetching, checkForErrors } from './loadingActions.js'
-
+import { fetch_instruments } from './instrumentActions.js'
 
 function initialize_users(user_arr) {
   return {type: "INITIALIZE_USERS", payload: user_arr}
@@ -82,7 +82,9 @@ export function postNewUser(userObj) {
         password: userObj.password,
         first_name: userObj.firstName,
         last_name: userObj.lastName,
-        instrument_ids: userObj.instrumentIds
+        instrument_ids: userObj.instrumentIds,
+        new_instrument: userObj.newInstrument,
+        new_instrument_fam: userObj.newInstrumentFam
       })
     })
     .then(res=>res.json())
@@ -92,6 +94,7 @@ export function postNewUser(userObj) {
       }
       dispatch(checkForErrors(json, newSession))
       dispatch(fetch_users())
+      dispatch(fetch_instruments())
       dispatch(doneFetching())
     })
   }
@@ -116,13 +119,16 @@ export function editUser(userObj) {
         username: userObj.username,
         first_name: userObj.firstName,
         last_name: userObj.lastName,
-        instrument_ids: userObj.instrumentIds
+        instrument_ids: userObj.instrumentIds,
+        new_instrument: userObj.newInstrument,
+        new_instrument_fam: userObj.newInstrumentFam
       })
     })
     .then(res => res.json())
     .then(json => {
       dispatch(checkForErrors(json, updateUser))
       dispatch(fetch_users())
+      dispatch(fetch_instruments())
       dispatch(doneFetching())
     })
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { inputStyle, textInputStyle, buttonStyle } from '../reusables/form-style.js'
+import { inputStyle, textInputStyle, buttonDiv, buttonStyle } from '../reusables/form-style.js'
 import { navBarStyle, outsideNewUserPadding, headerStyle, loginLinkStyle, linkStyle, newUserFormStyle, nameInputStyle } from './new-user-form-style.js'
 
 import { postNewUser } from '../../actions/userActions.js'
@@ -16,7 +16,9 @@ class NewUserForm extends React.Component {
     lastName: "",
     username: "",
     password: "",
-    myInstruments: []
+    myInstruments: [],
+    newInstrument: "",
+    newInstrumentFam: "10"
   }
 
   changeFirstName = (ev) => {
@@ -39,6 +41,14 @@ class NewUserForm extends React.Component {
     this.setState({ myInstruments: instList})
   }
 
+  onNewInstrument = (ev) => {
+    this.setState({newInstrument: ev.target.value})
+  }
+
+  onNewInstrumentFam = (ev) => {
+    this.setState({newInstrumentFam: ev.target.value})
+  }
+
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.newUser({
@@ -46,11 +56,14 @@ class NewUserForm extends React.Component {
       lastName: this.state.lastName,
       username: this.state.username,
       password: this.state.password,
-      instrumentIds: this.state.myInstruments.map(i=>(i.id))
+      instrumentIds: this.state.myInstruments.map(i=>(i.id)),
+      newInstrument: this.state.newInstrument,
+      newInstrumentFam: this.state.newInstrumentFam
     })
   }
 
   render() {
+    console.log("state in newuser ", this.state)
     return (
       <div style={outsideNewUserPadding()}>
         <div style={navBarStyle()}>
@@ -85,9 +98,11 @@ class NewUserForm extends React.Component {
             <input style={textInputStyle()} type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
           </div>
 
-          <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments}/>
+          <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments} onNewInstrument={this.onNewInstrument} newInstrument={this.state.newInstrument} onNewInstrumentFam={this.onNewInstrumentFam} newInstrumentFam={this.state.newInstrumentFam}/>
 
-          <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Sign Up</button>
+          <div style={buttonDiv()}>
+            <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Sign Up</button>
+          </div>
 
         </form>
       </div>

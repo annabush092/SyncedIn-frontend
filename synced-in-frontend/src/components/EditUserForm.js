@@ -13,7 +13,9 @@ class NewUserForm extends React.Component {
     firstName: this.props.currentUser.full_name.split(" ")[0],
     lastName: this.props.currentUser.full_name.split(" ")[1],
     username: this.props.currentUser.username,
-    myInstruments: this.props.currentUserInstruments
+    myInstruments: this.props.currentUserInstruments,
+    newInstrument: "",
+    newInstrumentFam: "10"
   }
 
   changeFirstName = (ev) => {
@@ -32,6 +34,14 @@ class NewUserForm extends React.Component {
     this.setState({ myInstruments: instList})
   }
 
+  onNewInstrument = (ev) => {
+    this.setState({newInstrument: ev.target.value})
+  }
+
+  onNewInstrumentFam = (ev) => {
+    this.setState({newInstrumentFam: ev.target.value})
+  }
+
   handleSubmit = (ev) => {
     ev.preventDefault()
     this.props.editMe({
@@ -39,13 +49,16 @@ class NewUserForm extends React.Component {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       username: this.state.username,
-      instrumentIds: this.state.myInstruments.map(i=>(i.id))
+      instrumentIds: this.state.myInstruments.map(i=>(i.id)),
+      newInstrument: this.state.newInstrument,
+      newInstrumentFam: this.state.newInstrumentFam
     })
     this.props.changeCurrentProfile(this.props.currentUser.id)
     this.props.redirectingToProfile()
   }
 
   render() {
+    console.log("state in edituser ", this.state)
     return (
       <div>
         {(this.props.errors.length > 0) ? (
@@ -68,7 +81,7 @@ class NewUserForm extends React.Component {
                   <Form.Input fluid placeholder='Last Name' onChange={this.changeLastName} value={this.state.lastName}/>
                   <Form.Input fluid placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
 
-                  <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments}/>
+                  <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments} onNewInstrument={this.onNewInstrument} newInstrument={this.state.newInstrument} onNewInstrumentFam={this.onNewInstrumentFam} newInstrumentFam={this.state.newInstrumentFam}/>
 
                   <Button color='blue' fluid size='large' type='submit' onClick={this.handleSubmit}>Save Changes</Button>
                 </Segment>

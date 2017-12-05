@@ -14,11 +14,10 @@ Priority:
   Formatting!
 
   done - Add time stamps to posts so they're displayed newest on the top
+  done - Allow users to add instruments if they are not in the list yet
 
-  Allow users to add instruments if they are not in the list yet
-
-  Expand NewUserForm and EditUserForm to add genre/skills.
-
+  Move error state into the loadingReducer instead of the userReducer.
+  Move error check into loadingPrep
 
   window.scrollTo(0, 0) in componentDidMount() ensures all pages load scrolled to the top of the page
 
@@ -26,9 +25,6 @@ Priority:
 Refactoring/fixing not priority:
 
   When you re-load a profile page, it gets messed up (same problem)- try putting the profile state check in App instead of where it is...
-
-  Move error state into the loadingReducer instead of the userReducer.
-  Move error check into loadingPrep
 
   Find a way to display the error state in App if anything goes wrong. Something like github errors?
   Catch error in frontend if server is down and sends any response besides 200...
@@ -40,6 +36,8 @@ Refactoring/fixing not priority:
 
 
 Features not priority:
+
+  Expand NewUserForm and EditUserForm to add genre/skills.
 
   Make the user interface to change password more secure (have them type it twice)
   Make users enter their password to verify before making any changes to their profile.

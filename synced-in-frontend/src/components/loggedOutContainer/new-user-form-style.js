@@ -14,8 +14,6 @@ export function outsideNewUserPadding() {
   return {
     paddingBottom: '2em',
     background: '#f6f6f6',
-    // width: '100vw',
-    // height: '100vh',
   }
 }
 
@@ -50,6 +48,8 @@ export function newUserFormStyle() {
     padding: '2em',
     border: 'solid #b2b2b2 .1em',
     boxShadow: '0 4px 4px 0 #b2b2b2',
+    display: 'block',
+    overflow: 'auto'
   }
 }
 

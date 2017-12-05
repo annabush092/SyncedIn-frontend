@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { outerFormStyle, headerStyle, formStyle, inputStyle, textInputStyle, buttonStyle, messageStyle } from '../reusables/form-style.js'
+import { outerFormStyle, headerStyle, formStyle, inputStyle, textInputStyle, buttonDiv, buttonStyle, messageStyle } from '../reusables/form-style.js'
 import { outsideLoginPadding } from './login-form-style.js'
 
 import { post_login } from '../../actions/userActions.js'
@@ -52,7 +52,9 @@ class LoginForm extends React.Component {
               <label>Password: </label><br />
               <input style={textInputStyle()} type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
             </div>
-            <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Login</button>
+            <div style={buttonDiv()}>
+              <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Login</button>
+            </div>
           </form>
           <div style={messageStyle()}>
             Don't have an account?
