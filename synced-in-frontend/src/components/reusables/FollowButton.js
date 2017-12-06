@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button } from 'semantic-ui-react'
+
+import { followButton, followButtonDiv } from '../userListContainer/card-style.js'
 
 import { followUser, unfollowUser } from '../../actions/userActions.js'
 
@@ -18,9 +19,21 @@ class FollowButton extends React.Component {
     if(this.props.userId === this.props.currentUser.id) {
       return null
     }else if( this.props.currentUser.users_i_am_following.find(followed => (followed.id === this.props.userId)) ){
-      return (<Button floated='right' onClick={this.onUnfollowUser}>Unfollow</Button>)
+      return (
+        <div style={followButtonDiv()}>
+          <button style={followButton()} onClick={this.onUnfollowUser}>
+            Unfollow
+          </button>
+        </div>
+      )
     }else {
-      return (<Button floated='right' onClick={this.onFollowUser}>Follow</Button>)
+      return (
+        <div style={followButtonDiv()}>
+          <button style={followButton()} onClick={this.onFollowUser}>
+            Follow
+          </button>
+        </div>
+      )
     }
   }
 

@@ -2,7 +2,8 @@ import React from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
-import { Card, List } from 'semantic-ui-react'
+
+import { cardStyle, outsideCardPadding, cardHeaderStyle, cardListStyle, instrumentListStyle } from './card-style.js'
 
 import { changeProfile, redirectToProfile } from '../../actions/userActions.js'
 import FollowButton from '../reusables/FollowButton.js'
@@ -11,11 +12,9 @@ class UserCard extends React.Component {
 
   myInstruments = () => (
     this.props.show_skills.map((inst_skill) => (
-      <List.Item key={uuid()}>
-        <List.Content>
-          {inst_skill.instrument}
-        </List.Content>
-      </List.Item>
+      <div style={instrumentListStyle()} key={uuid()}>
+        {inst_skill.instrument}
+      </div>
     ))
   )
 
@@ -28,20 +27,20 @@ class UserCard extends React.Component {
 
   render() {
     return(
-      <Card>
-        <Card.Content>
-          <Card.Header>
-            <h2 onClick={this.onNameClick}>{this.props.full_name}</h2>
+      <div style={outsideCardPadding()}>
+        <div style={cardStyle()}>
+          <div style={cardHeaderStyle()} onClick={this.onNameClick}>
+            {this.props.full_name}
             {this.props.loadNewProfile ? (
               <Redirect to={`/users/${this.props.id}`}/>
             ) : (null) }
-            <FollowButton userId={this.props.id}/>
-          </Card.Header>
-          <Card.Description>
-            <List horizontal>{this.myInstruments()}</List>
-          </Card.Description>
-        </Card.Content>
-      </Card>
+          </div>
+          <FollowButton userId={this.props.id}/>
+          <div style={cardListStyle()}>
+            {this.myInstruments()}
+          </div>
+        </div>
+      </div>
     )
   }
 }
@@ -60,3 +59,18 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserCard))
+
+// <Card>
+//   <Card.Content>
+//     <Card.Header>
+//       <h2 onClick={this.onNameClick}>{this.props.full_name}</h2>
+//       {this.props.loadNewProfile ? (
+//         <Redirect to={`/users/${this.props.id}`}/>
+//       ) : (null) }
+//       <FollowButton userId={this.props.id}/>
+//     </Card.Header>
+//     <Card.Description>
+//       <List horizontal>{this.myInstruments()}</List>
+//     </Card.Description>
+//   </Card.Content>
+// </Card>
