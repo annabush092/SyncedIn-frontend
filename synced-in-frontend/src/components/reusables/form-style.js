@@ -48,20 +48,28 @@ export function textInputStyle() {
 export function buttonDiv() {
   return {
     width: '100%',
+    cssFloat: 'left',
     position: 'relative',
-    cssFloat: 'left'
+    color: 'white',
+    fontSize: '1em'
   }
 }
 
 export function buttonStyle() {
   return {
+    width: '8.5em',
+    padding: '.5em',
+    paddingTop: '.75em',
+    paddingBottom: '.75em',
+    textAlign: 'center',
+    lineHeight: '1',
+    cursor: 'pointer',
     marginTop: '1.8em',
     marginBottom: '1em',
-    width: '30%',
+    marginRight: '10%',
     position: 'relative',
-    left: '60%',
-    fontSize: '1.3em',
-    padding: '.5em',
+    cssFloat: 'right',
+    fontSize: '1em',
     backgroundColor: '#f91818ff',
     color: 'white',
     borderRadius: '.3em'

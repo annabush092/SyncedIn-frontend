@@ -88,7 +88,9 @@ class NewUserForm extends React.Component {
           </div>
           <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments} onNewInstrument={this.onNewInstrument} newInstrument={this.state.newInstrument} onNewInstrumentFam={this.onNewInstrumentFam} newInstrumentFam={this.state.newInstrumentFam}/>
           <div style={buttonDiv()}>
-          <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Save Changes</button>
+          <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>
+            Save Changes
+          </button>
           </div>
         </form>
       </div>

@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
-import { Form, Button, Dropdown } from 'semantic-ui-react'
+
+import { Dropdown } from 'semantic-ui-react'
+import { textInputStyle, buttonDiv } from '../reusables/form-style.js'
+import { postInputStyle, dropdownStyle, newPostFormStyle, postButtonStyle } from './new-post-form-style.js'
+import { outsideNewUserPadding } from '../loggedOutContainer/new-user-form-style.js'
+
 
 import {persistPost} from '../../actions/postActions.js'
 
@@ -38,12 +43,22 @@ class NewPostForm extends React.Component {
 
   render() {
     return(
-      <div>
-      <Form size='large'>
-          <Form.Input fluid placeholder='New Post' onChange={this.onNewContent} value={this.state.newContent}/>
-          <Dropdown placeholder='Add Tags' fluid multiple search selection allowAdditions options={this.state.tagOptions} onAddItem={this.handleAddition} onChange={this.onNewTag}/>
-          <Button color='blue' fluid size='large' type='submit' onClick={this.handleSubmit}>Publish Post</Button>
-      </Form>
+      <div style={outsideNewUserPadding()}>
+        <form style={newPostFormStyle()}>
+          <div style={postInputStyle()}>
+            <label>Write a new post: </label><br />
+            <input style={textInputStyle()} type="text" placeholder='New Post' onChange={this.onNewContent} value={this.state.newContent}/>
+          </div>
+          <div style={postInputStyle()}>
+            <label>Tag your post: </label><br />
+            <Dropdown style={dropdownStyle()} placeholder='Add Tags' multiple search selection allowAdditions options={this.state.tagOptions} onAddItem={this.handleAddition} onChange={this.onNewTag}/><br />
+          </div>
+          <div style={buttonDiv()}>
+            <button style={postButtonStyle()} type='submit' onClick={this.handleSubmit}>
+              Publish Post
+            </button>
+          </div>
+        </form>
       </div>
     )
   }

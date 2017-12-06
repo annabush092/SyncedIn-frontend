@@ -36,17 +36,17 @@ class NavBar extends React.Component {
           ) : (null) }
         </div>
         <div style={loginLinkStyle()}>
-          <Link to={`/users/${this.props.currentUser.id}/edit`} exact style={linkStyle()}>
+          <Link to={`/users/${this.props.currentUser.id}/edit`} style={linkStyle()}>
             Edit Profile
           </Link>
         </div>
         <div style={loginLinkStyle()}>
-          <Link to='/users' exact style={linkStyle()}>
+          <Link to='/users' style={linkStyle()}>
             Find Musicians
           </Link>
         </div>
         <div style={loginLinkStyle()}>
-          <Link to='/posts' exact style={linkStyle()}>
+          <Link to='/posts' style={linkStyle()}>
             Home
           </Link>
         </div>

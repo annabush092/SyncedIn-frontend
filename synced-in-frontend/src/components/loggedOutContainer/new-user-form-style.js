@@ -24,7 +24,7 @@ export function alreadyUserMessage() {
     display: 'inline-block',
     cssFloat: 'right',
     padding: '.5em',
-    paddingTop: '1em',
+    paddingTop: '1.25em',
     fontSize: '1em',
     lineHeight: '1'
   }
