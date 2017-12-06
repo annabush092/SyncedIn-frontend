@@ -69,7 +69,7 @@ export function newUserFormStyle() {
     position: 'relative',
     padding: '2em',
     border: 'solid #b2b2b2 .1em',
-    boxShadow: '0 4px 4px 0 #b2b2b2',
+    boxShadow: '0 2px 2px 0 #b2b2b2',
     display: 'block',
     overflow: 'auto'
   }

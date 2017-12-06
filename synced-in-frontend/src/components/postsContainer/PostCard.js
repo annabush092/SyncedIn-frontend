@@ -2,7 +2,10 @@ import React from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
-import { Card, List } from 'semantic-ui-react'
+
+import { cardHeaderStyle } from '../userListContainer/card-style.js'
+import { outsidePostCard, postCardStyle, fullContentStyle, timeStyle, contentStyle, tagListStyle, tagStyle } from './post-card-style.js'
+
 
 import { changeProfile, redirectToProfile } from '../../actions/userActions.js'
 
@@ -17,11 +20,9 @@ class PostCard extends React.Component {
 
     renderTags = () => (
       this.props.tags.map((tag)=>(
-        <List.Item key={uuid()}>
-          <List.Content>
-            #{tag.tag_text}
-          </List.Content>
-        </List.Item>
+        <div style={tagStyle()} key={uuid()}>
+          #{tag.tag_text}
+        </div>
       ))
     )
 
@@ -38,23 +39,27 @@ class PostCard extends React.Component {
 
     render() {
       return(
-        <Card fluid>
-          <Card.Content>
-            <Card.Header>
-              <h2 onClick={this.onNameClick}>{this.props.author.full_name}</h2>
+        <div style={outsidePostCard()}>
+          <div style={postCardStyle()}>
+            <div style={fullContentStyle()}>
+              <div style={cardHeaderStyle()} onClick={this.onNameClick}>
+                {this.props.author.full_name}
+              </div>
               {this.props.loadNewProfile ? (
                 <Redirect to={`/users/${this.props.author.id}`}/>
               ) : (null) }
+              <div style={timeStyle()}>
               {this.renderTime()}
-            </Card.Header>
-            <Card.Description>
+              </div>
+              <div style={contentStyle()}>
               {this.props.content}
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <List horizontal>{this.renderTags()}</List>
-          </Card.Content>
-        </Card>
+              </div>
+            </div>
+            <div style={tagListStyle()}>
+              {this.renderTags()}
+            </div>
+          </div>
+        </div>
       )
     }
   }

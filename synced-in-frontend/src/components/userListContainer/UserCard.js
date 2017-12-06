@@ -59,18 +59,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserCard))
-
-// <Card>
-//   <Card.Content>
-//     <Card.Header>
-//       <h2 onClick={this.onNameClick}>{this.props.full_name}</h2>
-//       {this.props.loadNewProfile ? (
-//         <Redirect to={`/users/${this.props.id}`}/>
-//       ) : (null) }
-//       <FollowButton userId={this.props.id}/>
-//     </Card.Header>
-//     <Card.Description>
-//       <List horizontal>{this.myInstruments()}</List>
-//     </Card.Description>
-//   </Card.Content>
-// </Card>
