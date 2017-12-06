@@ -4,9 +4,10 @@ export function navBarStyle() {
   return {
     background: '#262626',
     width: '100vw',
-    padding: '2em',
-    display: 'block',
-    overflow: 'auto'
+    padding: '.2em',
+    paddingRight: '1.2em',
+    display: 'inline-block',
+    overflow: 'auto',
   }
 }
 
@@ -17,25 +18,46 @@ export function outsideNewUserPadding() {
   }
 }
 
+export function alreadyUserMessage() {
+  return {
+    color: 'white',
+    display: 'inline-block',
+    cssFloat: 'right',
+    padding: '.5em',
+    paddingTop: '1em',
+    fontSize: '1em',
+    lineHeight: '1'
+  }
+}
+
 export function loginLinkStyle() {
   return {
-    width: '100%',
-    textAlign: 'right',
+    width: '8.5em',
+    height: "100%",
+    cssFloat: 'right',
     color: 'white',
-    fontSize: '1.2em',
+    fontSize: '1em',
+    display: "inline-block",
+    padding: '.5em',
+    paddingLeft: '0em',
+    margin: 'none',
   }
 }
 
 export function linkStyle() {
   return {
-    marginLeft: '1em',
-    marginRight: '1em',
+    width: '100%',
     padding: '.5em',
-    paddingLeft: '1.5em',
-    paddingRight: '1.5em',
+    paddingTop: '.75em',
+    paddingBottom: '.75em',
     backgroundColor: '#f91818ff',
     color: 'white',
     borderRadius: '.3em',
+    border: 'none',
+    display: 'block',
+    textAlign: 'center',
+    lineHeight: '1',
+    cursor: 'pointer'
   }
 }
 

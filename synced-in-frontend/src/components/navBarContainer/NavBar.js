@@ -1,18 +1,12 @@
 import React from 'react'
-import { NavLink, withRouter, Redirect } from 'react-router-dom'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Menu, Button } from 'semantic-ui-react'
+
+import { navBarStyle, loginLinkStyle, linkStyle } from '../loggedOutContainer/new-user-form-style.js'
 
 import { logout, changeProfile, redirectToProfile } from '../../actions/userActions.js'
 
 class NavBar extends React.Component {
-
-  linkStyle = () => (
-    {
-      background: 'black',
-      color: 'white'
-    }
-  )
 
   onLogout = () => {
     this.props.toLogOut()
@@ -27,41 +21,36 @@ class NavBar extends React.Component {
 
   render() {
     return(
-      <div>
-        <Menu fixed='top' inverted>
-          <Menu.Menu position='right'>
-            <Menu.Item>
-              <NavLink
-                to='/posts'
-                exact
-                style={this.linkStyle()}
-              > Home </NavLink>
-            </Menu.Item>
-            <Menu.Item>
-              <NavLink
-                to='/users'
-                exact
-                style={this.linkStyle()}
-              > Find Musicians </NavLink>
-            </Menu.Item>
-            <Menu.Item>
-              <Button onClick={this.onProfileClick}>See my Profile </Button>
-              { this.props.loadNewProfile ? (
-                <Redirect to={`/users/${this.props.currentUser.id}`}/>
-              ) : (null) }
-            </Menu.Item>
-            <Menu.Item>
-              <NavLink
-                to={`/users/${this.props.currentUser.id}/edit`}
-                exact
-                style={this.linkStyle()}
-              > Edit Profile </NavLink>
-            </Menu.Item>
-            <Menu.Item>
-              <Button onClick={this.onLogout}>Log out</Button>
-            </Menu.Item>
-          </Menu.Menu>
-        </Menu>
+      <div style={navBarStyle()}>
+        <div style={loginLinkStyle()}>
+          <button style={linkStyle()} type='submit' onClick={this.onLogout}>
+            Log out
+          </button>
+        </div>
+        <div style={loginLinkStyle()}>
+          <button style={linkStyle()} onClick={this.onProfileClick}>
+            See my Profile
+          </button>
+          { this.props.loadNewProfile ? (
+            <Redirect to={`/users/${this.props.currentUser.id}`}/>
+          ) : (null) }
+        </div>
+        <div style={loginLinkStyle()}>
+          <Link to={`/users/${this.props.currentUser.id}/edit`} exact style={linkStyle()}>
+            Edit Profile
+          </Link>
+        </div>
+        <div style={loginLinkStyle()}>
+          <Link to='/users' exact style={linkStyle()}>
+            Find Musicians
+          </Link>
+        </div>
+        <div style={loginLinkStyle()}>
+          <Link to='/posts' exact style={linkStyle()}>
+            Home
+          </Link>
+        </div>
+
       </div>
     )
   }
@@ -83,3 +72,39 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
+
+//
+// <Menu fixed='top' inverted>
+//   <Menu.Menu position='right'>
+//     <Menu.Item>
+      // <NavLink
+      //   to='/posts'
+      //   exact
+      //   style={this.linkStyle()}
+      // > Home </NavLink>
+    // </Menu.Item>
+    // <Menu.Item>
+      // <NavLink
+      //   to='/users'
+      //   exact
+      //   style={this.linkStyle()}
+      // > Find Musicians </NavLink>
+    // </Menu.Item>
+    // <Menu.Item>
+      // <Button onClick={this.onProfileClick}>See my Profile </Button>
+      // { this.props.loadNewProfile ? (
+      //   <Redirect to={`/users/${this.props.currentUser.id}`}/>
+    //   // ) : (null) }
+    // </Menu.Item>
+    // <Menu.Item>
+      // <NavLink
+      //   to={`/users/${this.props.currentUser.id}/edit`}
+      //   exact
+      //   style={this.linkStyle()}
+    //   // > Edit Profile </NavLink>
+    // </Menu.Item>
+    // <Menu.Item>
+      // <Button onClick={this.onLogout}>Log out</Button>
+//     </Menu.Item>
+//   </Menu.Menu>
+// </Menu>

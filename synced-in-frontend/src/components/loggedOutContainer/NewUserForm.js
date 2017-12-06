@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { inputStyle, textInputStyle, buttonDiv, buttonStyle } from '../reusables/form-style.js'
-import { navBarStyle, outsideNewUserPadding, headerStyle, loginLinkStyle, linkStyle, newUserFormStyle, nameInputStyle } from './new-user-form-style.js'
+import { navBarStyle, outsideNewUserPadding, headerStyle, alreadyUserMessage, loginLinkStyle, linkStyle, newUserFormStyle, nameInputStyle } from './new-user-form-style.js'
 
 import { postNewUser } from '../../actions/userActions.js'
 
@@ -63,13 +63,14 @@ class NewUserForm extends React.Component {
   }
 
   render() {
-    console.log("state in newuser ", this.state)
     return (
       <div style={outsideNewUserPadding()}>
         <div style={navBarStyle()}>
           <div style={loginLinkStyle()}>
-            Already have an account?
             <Link to="/login" style={linkStyle()}>Login here </Link>
+          </div>
+          <div style={alreadyUserMessage()}>
+            Already have an account?
           </div>
         </div>
         {(this.props.errors.length > 0) ? (

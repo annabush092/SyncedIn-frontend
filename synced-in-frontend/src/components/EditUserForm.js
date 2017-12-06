@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
-import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
+
+import { inputStyle, textInputStyle, buttonDiv, buttonStyle } from './reusables/form-style.js'
+import { outsideNewUserPadding, headerStyle, newUserFormStyle, nameInputStyle } from './loggedOutContainer/new-user-form-style.js'
 
 import { editUser, changeProfile, redirectToProfile } from '../actions/userActions.js'
 
@@ -58,9 +60,8 @@ class NewUserForm extends React.Component {
   }
 
   render() {
-    console.log("state in edituser ", this.state)
     return (
-      <div>
+      <div style={outsideNewUserPadding()}>
         {(this.props.errors.length > 0) ? (
           <h3>{this.props.errors}</h3>
         ) : ( null )}
@@ -69,26 +70,27 @@ class NewUserForm extends React.Component {
           <Redirect exact to={`/users/${this.props.currentUser.id}`}/>
         ) : ( null )}
 
-        <div className='new-user-form' style={{paddingTop: '100px'}}>
-          <Grid textAlign='center' style={{height: '100%'}} verticalAlign='middle'>
-            <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='blue' textAlign='center'>
-                Edit your account
-              </Header>
-              <Form size='large'>
-                <Segment stacked>
-                  <Form.Input fluid placeholder='First Name' onChange={this.changeFirstName} value={this.state.firstName}/>
-                  <Form.Input fluid placeholder='Last Name' onChange={this.changeLastName} value={this.state.lastName}/>
-                  <Form.Input fluid placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
-
-                  <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments} onNewInstrument={this.onNewInstrument} newInstrument={this.state.newInstrument} onNewInstrumentFam={this.onNewInstrumentFam} newInstrumentFam={this.state.newInstrumentFam}/>
-
-                  <Button color='blue' fluid size='large' type='submit' onClick={this.handleSubmit}>Save Changes</Button>
-                </Segment>
-              </Form>
-            </Grid.Column>
-          </Grid>
-        </div>
+        <form style={newUserFormStyle()}>
+          <div style={headerStyle()}>
+            Edit your account
+          </div>
+          <div style={nameInputStyle()}>
+            <label>First name: </label><br />
+            <input style={textInputStyle()} type='text' placeholder='First Name' onChange={this.changeFirstName} value={this.state.firstName}/>
+          </div>
+          <div style={nameInputStyle()}>
+            <label>Last name: </label><br />
+            <input style={textInputStyle()} type='text' placeholder='Last Name' onChange={this.changeLastName} value={this.state.lastName}/>
+          </div>
+          <div style={inputStyle()}>
+            <label>Username: </label><br />
+            <input style={textInputStyle()} type='text' placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
+          </div>
+          <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments} onNewInstrument={this.onNewInstrument} newInstrument={this.state.newInstrument} onNewInstrumentFam={this.onNewInstrumentFam} newInstrumentFam={this.state.newInstrumentFam}/>
+          <div style={buttonDiv()}>
+          <button style={buttonStyle()} type='submit' onClick={this.handleSubmit}>Save Changes</button>
+          </div>
+        </form>
       </div>
     )
   }

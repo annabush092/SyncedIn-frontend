@@ -13,9 +13,6 @@ Priority:
 
   Formatting!
 
-  done - Add time stamps to posts so they're displayed newest on the top
-  done - Allow users to add instruments if they are not in the list yet
-
   Move error state into the loadingReducer instead of the userReducer.
   Move error check into loadingPrep
 
