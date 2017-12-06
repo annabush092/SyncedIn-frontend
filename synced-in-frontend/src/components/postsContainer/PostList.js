@@ -46,7 +46,7 @@ class PostList extends React.Component {
     return(
       <div style={postListStyle()}>
         <NewPostForm/>
-        <Filter handleInput={this.handleInput}/>
+        <Filter handleInput={this.handleInput} searchType="tags"/>
         {sortPosts(this.postCards())}
       </div>
     )

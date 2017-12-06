@@ -1,9 +1,13 @@
 import React from 'react'
-import { Input, Icon } from 'semantic-ui-react'
+
+import { filterStyle, filterDiv } from './form-style.js'
 
 function Filter(props){
   return(
-    <Input icon={<Icon name='search' inverted circular link/>} placeholder='Search' onChange={props.handleInput}/>
+    <div style={filterDiv()}>
+      <label>Search {props.searchType}: </label>
+      <input style={filterStyle()} type="text" placeholder='Search' onChange={props.handleInput}/>
+    </div>
   )
 }
 

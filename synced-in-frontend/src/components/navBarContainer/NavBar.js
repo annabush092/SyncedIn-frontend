@@ -29,7 +29,7 @@ class NavBar extends React.Component {
         </div>
         <div style={loginLinkStyle()}>
           <button style={linkStyle()} onClick={this.onProfileClick}>
-            See my Profile
+            {this.props.currentUser.full_name}
           </button>
           { this.props.loadNewProfile ? (
             <Redirect to={`/users/${this.props.currentUser.id}`}/>
@@ -72,39 +72,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavBar))
-
-//
-// <Menu fixed='top' inverted>
-//   <Menu.Menu position='right'>
-//     <Menu.Item>
-      // <NavLink
-      //   to='/posts'
-      //   exact
-      //   style={this.linkStyle()}
-      // > Home </NavLink>
-    // </Menu.Item>
-    // <Menu.Item>
-      // <NavLink
-      //   to='/users'
-      //   exact
-      //   style={this.linkStyle()}
-      // > Find Musicians </NavLink>
-    // </Menu.Item>
-    // <Menu.Item>
-      // <Button onClick={this.onProfileClick}>See my Profile </Button>
-      // { this.props.loadNewProfile ? (
-      //   <Redirect to={`/users/${this.props.currentUser.id}`}/>
-    //   // ) : (null) }
-    // </Menu.Item>
-    // <Menu.Item>
-      // <NavLink
-      //   to={`/users/${this.props.currentUser.id}/edit`}
-      //   exact
-      //   style={this.linkStyle()}
-    //   // > Edit Profile </NavLink>
-    // </Menu.Item>
-    // <Menu.Item>
-      // <Button onClick={this.onLogout}>Log out</Button>
-//     </Menu.Item>
-//   </Menu.Menu>
-// </Menu>

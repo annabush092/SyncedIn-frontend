@@ -42,6 +42,7 @@ export function textInputStyle() {
     return {
       width: '100%',
       padding: '.5em',
+      borderRadius: '.3em'
     }
 }
 
@@ -84,5 +85,27 @@ export function messageStyle() {
     borderTop: 'solid #b2b2b2 .1em',
     textAlign: 'center',
     fontSize: '1.2em',
+  }
+}
+
+export function filterDiv() {
+  return {
+    background: '#262626',
+    color: 'white',
+    width: '100%',
+    borderRadius: '.3em',
+    border: 'solid #b2b2b2 .1em',
+    boxShadow: '0 2px 2px 0 #b2b2b2',
+    marginBottom: '1em',
+    paddingLeft: '3em'
+  }
+}
+
+export function filterStyle() {
+  return {
+    width: '30em',
+    padding: '.5em',
+    margin: '1em',
+    borderRadius: '.3em',
   }
 }

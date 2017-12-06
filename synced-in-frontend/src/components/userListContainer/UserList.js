@@ -2,7 +2,8 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
-import { Card } from 'semantic-ui-react'
+
+import { userListStyle } from './card-style.js'
 
 import Filter from '../reusables/Filter.js'
 import UserCard from './UserCard.js'
@@ -61,11 +62,11 @@ class UserList extends React.Component {
 
   render() {
     return(
-      <div style={{paddingTop: '60px', paddingLeft: '20px'}}>
-        <Filter handleInput={this.handleInput}/>
-        <Card.Group style={{paddingTop: '30px'}}>
+      <div style={userListStyle()}>
+        <Filter handleInput={this.handleInput} searchType="users"/>
+        <div>
           {this.userCards()}
-        </Card.Group>
+        </div>
       </div>
     )
   }

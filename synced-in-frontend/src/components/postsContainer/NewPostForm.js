@@ -47,7 +47,7 @@ class NewPostForm extends React.Component {
         <form style={newPostFormStyle()}>
           <div style={postInputStyle()}>
             <label>Write a new post: </label><br />
-            <input style={textInputStyle()} type="text" placeholder='New Post' onChange={this.onNewContent} value={this.state.newContent}/>
+            <input required style={textInputStyle()} type="text" placeholder='New Post' onChange={this.onNewContent} value={this.state.newContent}/>
           </div>
           <div style={postInputStyle()}>
             <label>Tag your post: </label><br />

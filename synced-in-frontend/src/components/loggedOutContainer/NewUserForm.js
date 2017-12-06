@@ -84,19 +84,19 @@ class NewUserForm extends React.Component {
           </div>
           <div style={nameInputStyle()}>
             <label>First name: </label><br />
-            <input style={textInputStyle()} type='text' placeholder='First Name' onChange={this.changeFirstName} value={this.state.firstName}/>
+            <input required style={textInputStyle()} type='text' placeholder='First Name' onChange={this.changeFirstName} value={this.state.firstName}/>
           </div>
           <div style={nameInputStyle()}>
             <label>Last name: </label><br />
-            <input style={textInputStyle()} type='text' placeholder='Last Name' onChange={this.changeLastName} value={this.state.lastName}/>
+            <input required style={textInputStyle()} type='text' placeholder='Last Name' onChange={this.changeLastName} value={this.state.lastName}/>
           </div>
           <div style={inputStyle()}>
             <label>Username: </label><br />
-            <input style={textInputStyle()} type='text' placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
+            <input required style={textInputStyle()} type='text' placeholder='Username' onChange={this.changeUsername} value={this.state.username}/>
           </div>
           <div style={inputStyle()}>
             <label>Password: </label><br />
-            <input style={textInputStyle()} type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
+            <input required style={textInputStyle()} type="password" placeholder='Password' onChange={this.changePassword} value={this.state.password}/>
           </div>
 
           <AddInstrumentForm myInstruments={this.state.myInstruments} changeMyInstruments={this.changeMyInstruments} onNewInstrument={this.onNewInstrument} newInstrument={this.state.newInstrument} onNewInstrumentFam={this.onNewInstrumentFam} newInstrumentFam={this.state.newInstrumentFam}/>

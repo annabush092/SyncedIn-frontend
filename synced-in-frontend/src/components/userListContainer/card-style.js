@@ -1,4 +1,12 @@
 import {buttonStyle} from '../reusables/form-style.js'
+import {postListStyle} from '../postsContainer/post-card-style.js'
+
+export function userListStyle() {
+  return {
+    ...postListStyle(),
+    paddingTop: '1em'
+  }
+}
 
 export function outsideCardPadding() {
   return {
