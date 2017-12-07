@@ -4,7 +4,8 @@ export function navBarStyle() {
   return {
     background: '#262626',
     width: '100vw',
-    padding: '.2em',
+    paddingTop: '.2em',
+    paddingLeft: '.2em',
     paddingRight: '1.2em',
     display: 'inline-block',
     overflow: 'auto',
@@ -69,7 +70,6 @@ export function newUserFormStyle() {
     position: 'relative',
     padding: '2em',
     border: 'solid #b2b2b2 .1em',
-    boxShadow: '0 2px 2px 0 #b2b2b2',
     display: 'block',
     overflow: 'auto'
   }

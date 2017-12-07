@@ -4,7 +4,7 @@ import uuid from 'uuid'
 
 import { Dropdown } from 'semantic-ui-react'
 import { textInputStyle, buttonDiv } from '../reusables/form-style.js'
-import { postInputStyle, dropdownStyle, newPostFormStyle, postButtonStyle } from './new-post-form-style.js'
+import { postInputStyle, dropdownStyle, newPostFormStyle, postButtonStyle, newPostPadding } from './new-post-form-style.js'
 import { outsideNewUserPadding } from '../loggedOutContainer/new-user-form-style.js'
 
 
@@ -43,7 +43,7 @@ class NewPostForm extends React.Component {
 
   render() {
     return(
-      <div style={outsideNewUserPadding()}>
+      <div style={newPostPadding()}>
         <form style={newPostFormStyle()}>
           <div style={postInputStyle()}>
             <label>Write a new post: </label><br />

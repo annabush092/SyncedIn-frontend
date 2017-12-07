@@ -24,7 +24,6 @@ export function cardStyle() {
     borderRadius: '.3em',
     display: 'grid',
     border: 'solid #b2b2b2 .1em',
-    boxShadow: '0 4px 4px 0 #b2b2b2',
     background: 'white',
     padding: '1em',
     gridTemplateColumns: 'auto auto',

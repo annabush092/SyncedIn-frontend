@@ -4,7 +4,6 @@ export function outerFormStyle() {
     width: '50%',
     left: '25%',
     borderRadius: '.3em',
-    boxShadow: '0 4px 8px 0 black',
   }
 }
 
@@ -95,7 +94,6 @@ export function filterDiv() {
     width: '100%',
     borderRadius: '.3em',
     border: 'solid #b2b2b2 .1em',
-    boxShadow: '0 2px 2px 0 #b2b2b2',
     marginBottom: '1em',
     paddingLeft: '3em'
   }

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
 
-import { userListStyle } from './card-style.js'
+import { userListStyle, outsideCardPadding } from './card-style.js'
 
 import Filter from '../reusables/Filter.js'
 import UserCard from './UserCard.js'
@@ -54,7 +54,10 @@ class UserList extends React.Component {
   userCards = () => (
     this.props.allUsers.reduce((acc, user) => {
       if(this.filterUsers(user)) {
-        acc.push(<UserCard key={uuid()} {...user}/>)
+        acc.push(
+          <div key={uuid()} style={outsideCardPadding()}>
+            <UserCard {...user}/>
+          </div>)
       }
       return acc
     }, [])

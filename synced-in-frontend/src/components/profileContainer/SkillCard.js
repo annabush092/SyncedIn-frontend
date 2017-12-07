@@ -1,35 +1,28 @@
 import React from 'react'
 import uuid from 'uuid'
-import { List, Card } from 'semantic-ui-react'
+
+import { skillCardStyle, skillHeader, skillContent } from './profile-style.js'
 
 class SkillCard extends React.Component {
 
   skillGenres = () => (
     this.props.skills.map((genObj) => (
-      <List.Item key={uuid()}>
-        <List.Content>
+      <div key={uuid()} style={skillContent()}>
           <h3>Genre: {genObj.genre}</h3>
-          <li>Qualified to teach: {genObj.teach ? "Yes" : "No"} </li>
-          <li>Qualified to perform: {genObj.perform ? "Yes" : "No"}</li>
-        </List.Content>
-      </List.Item>
+          Qualified to teach: {genObj.teach ? "Yes" : "No"} <br />
+          Qualified to perform: {genObj.perform ? "Yes" : "No"}
+      </div>
     ))
   )
 
   render() {
     return (
-      <Card>
-        <Card.Content>
-          <Card.Header>
-            {this.props.instrument}
-          </Card.Header>
-          <Card.Description>
-            <List>
-              {this.skillGenres()}
-            </List>
-          </Card.Description>
-        </Card.Content>
-      </Card>
+      <div style={skillCardStyle()}>
+        <div style={skillHeader()}>
+          {this.props.instrument}
+        </div>
+        {this.skillGenres()}
+      </div>
     )
   }
 }

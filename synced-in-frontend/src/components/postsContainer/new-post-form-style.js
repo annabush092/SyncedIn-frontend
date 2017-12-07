@@ -35,3 +35,9 @@ export function postButtonStyle() {
     margin: '0'
   }
 }
+
+export function newPostPadding() {
+  return {
+    paddingBottom: '2em',
+  }
+}

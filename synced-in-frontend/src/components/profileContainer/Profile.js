@@ -2,7 +2,8 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
-import { Grid, Segment } from 'semantic-ui-react'
+
+import { profileContainerStyle, followingListStyle, skillBoxStyle, postsBoxStyle, profileCardPadding, nameHeaderStyle, followingHeader, skillList } from './profile-style.js'
 
 import SkillCard from './SkillCard.js'
 import UserCard from '../userListContainer/UserCard.js'
@@ -22,16 +23,18 @@ class Profile extends React.Component {
 
   renderSkills = () => (
     this.props.currentProfile.show_skills.map((inst_skill) => (
-      <Grid.Column key={uuid()}>
-        <SkillCard key={uuid()} instrument={inst_skill.instrument} skills={inst_skill.skills}/>
-      </Grid.Column>
+      <SkillCard key={uuid()} instrument={inst_skill.instrument} skills={inst_skill.skills}/>
     ))
   )
 
   followingList = () => (
     this.props.currentProfile.users_i_am_following.map((u) => {
       let userFromState = this.props.allUsers.find((stateU)=>(u.id === stateU.id))
-      return <UserCard key={uuid()} {...userFromState}/>
+      return (
+        <div key={uuid()} style={profileCardPadding()}>
+          <UserCard {...userFromState}/>
+        </div>
+      )
     })
   )
 
@@ -48,24 +51,27 @@ class Profile extends React.Component {
   render() {
     if(this.props.currentProfile) {
       return (
-        <div key={uuid()} style={{paddingTop: '60px', paddingLeft: '20px'}}>
-          <Grid columns='equal'>
-            <Grid.Column width={5}>
-              <h2>Following: </h2>
-              {this.followingList()}
-            </Grid.Column>
-            <Grid.Column>
-              <Segment>
-                <h1>{this.props.currentProfile.full_name}</h1>
-                <FollowButton userId={this.props.currentProfile.id}/>
-                <Grid columns={2}>
-                  {this.renderSkills()}
-                </Grid>
-              </Segment>
-              <NewPostForm/>
-              {sortPosts(this.postList())}
-            </Grid.Column>
-          </Grid>
+        <div key={uuid()} style={profileContainerStyle()}>
+          <div style={followingListStyle()}>
+            <h2 style={followingHeader()}>Following: </h2>
+            {this.followingList()}
+          </div>
+          <div style={skillBoxStyle()}>
+            <div style={nameHeaderStyle()}>
+              {this.props.currentProfile.full_name}
+            </div>
+            <FollowButton userId={this.props.currentProfile.id}/>
+            <div>
+              <h2>My Skills: </h2>
+              <div style={skillList()}>
+                {this.renderSkills()}
+              </div>
+            </div>
+          </div>
+          <div style={postsBoxStyle()}>
+            <NewPostForm/>
+            {sortPosts(this.postList())}
+          </div>
         </div>
       )
     }
