@@ -1,16 +1,16 @@
 import { inputStyle } from '../reusables/form-style.js'
 
-export function navBarStyle() {
-  return {
-    background: '#262626',
-    width: '100vw',
-    paddingTop: '.2em',
-    paddingLeft: '.2em',
-    paddingRight: '1.2em',
-    display: 'inline-block',
-    overflow: 'auto',
-  }
-}
+// export function navBarStyle() {
+//   return {
+//     background: '#262626',
+//     width: '100vw',
+//     paddingTop: '.2em',
+//     paddingLeft: '.2em',
+//     paddingRight: '1.2em',
+//     display: 'inline-block',
+//     overflow: 'auto',
+//   }
+// }
 
 export function outsideNewUserPadding() {
   return {
@@ -25,19 +25,19 @@ export function alreadyUserMessage() {
     display: 'inline-block',
     cssFloat: 'right',
     padding: '.5em',
-    paddingTop: '1.25em',
-    fontSize: '1em',
+    paddingTop: '1em',
+    fontSize: '1.3em',
     lineHeight: '1'
   }
 }
 
 export function loginLinkStyle() {
   return {
-    width: '8.5em',
+    // width: '8.5em',
     height: "100%",
     cssFloat: 'right',
     color: 'white',
-    fontSize: '1em',
+    fontSize: '1.3em',
     display: "inline-block",
     padding: '.5em',
     paddingLeft: '0em',
@@ -49,8 +49,10 @@ export function linkStyle() {
   return {
     width: '100%',
     padding: '.5em',
-    paddingTop: '.75em',
-    paddingBottom: '.75em',
+    paddingLeft: '.75em',
+    paddingRight: '.75em',
+    // paddingTop: '.75em',
+    // paddingBottom: '.75em',
     backgroundColor: '#f91818ff',
     color: 'white',
     borderRadius: '.3em',

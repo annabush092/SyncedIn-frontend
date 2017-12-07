@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-import { navBarStyle, loginLinkStyle, linkStyle } from '../loggedOutContainer/new-user-form-style.js'
+import { navBarStyle, logoStyle, navbarDivStyle, navLinkStyle } from './nav-bar-style.js'
 
 import { logout, changeProfile, redirectToProfile } from '../../actions/userActions.js'
 
@@ -22,31 +22,34 @@ class NavBar extends React.Component {
   render() {
     return(
       <div style={navBarStyle()}>
-        <div style={loginLinkStyle()}>
-          <button style={linkStyle()} type='submit' onClick={this.onLogout}>
+        <div style={logoStyle()}>
+          syncedIn
+        </div>
+        <div style={navbarDivStyle()}>
+          <button style={navLinkStyle()} type='submit' onClick={this.onLogout}>
             Log out
           </button>
         </div>
-        <div style={loginLinkStyle()}>
-          <button style={linkStyle()} onClick={this.onProfileClick}>
+        <div style={navbarDivStyle()}>
+          <button style={navLinkStyle()} onClick={this.onProfileClick}>
             {this.props.currentUser.full_name}
           </button>
           { this.props.loadNewProfile ? (
             <Redirect to={`/users/${this.props.currentUser.id}`}/>
           ) : (null) }
         </div>
-        <div style={loginLinkStyle()}>
-          <Link to={`/users/${this.props.currentUser.id}/edit`} style={linkStyle()}>
+        <div style={navbarDivStyle()}>
+          <Link to={`/users/${this.props.currentUser.id}/edit`} style={navLinkStyle()}>
             Edit Profile
           </Link>
         </div>
-        <div style={loginLinkStyle()}>
-          <Link to='/users' style={linkStyle()}>
+        <div style={navbarDivStyle()}>
+          <Link to='/users' style={navLinkStyle()}>
             Find Musicians
           </Link>
         </div>
-        <div style={loginLinkStyle()}>
-          <Link to='/posts' style={linkStyle()}>
+        <div style={navbarDivStyle()}>
+          <Link to='/posts' style={navLinkStyle()}>
             Home
           </Link>
         </div>

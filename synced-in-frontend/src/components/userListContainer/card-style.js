@@ -41,7 +41,8 @@ export function cardHeaderStyle() {
     color: '#f91818ff',
     gridColumn: '1 / 2',
     gridRow: '1 / 2',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    cursor: 'pointer',
   }
 }
 
@@ -58,7 +59,8 @@ export function followButton() {
     background: '#3a3a3a',
     margin: '0 0 0 0',
     width: '7em',
-    padding: '.5em .5em .5em .5em'
+    padding: '.5em .5em .5em .5em',
+    fontSize: '1em'
   }
 }
 
@@ -68,9 +70,6 @@ export function cardListStyle() {
     gridRow: '2 / 3',
     columns: '2',
     display: 'inline-block'
-    // display: 'grid',
-    // gridColumnGap: '.5em',
-    // gridTemplateColumns: 'auto auto auto'
   }
 }
 
@@ -81,11 +80,5 @@ export function instrumentListStyle() {
     paddingBottom: '1em',
     display: 'inline-block',
     width: '100%'
-    // cssFloat: 'top'
-    // alignSelf: 'center'
-    // textAlign: 'center'
-    // display: 'inline-block',
-    // cssFloat: 'left',
-    // paddingRight: '1em'
   }
 }

@@ -51,7 +51,7 @@ export function buttonDiv() {
     cssFloat: 'left',
     position: 'relative',
     color: 'white',
-    fontSize: '1em'
+    // fontSize: '1em'
   }
 }
 
@@ -69,7 +69,7 @@ export function buttonStyle() {
     marginRight: '10%',
     position: 'relative',
     cssFloat: 'right',
-    fontSize: '1em',
+    fontSize: '1.2em',
     backgroundColor: '#f91818ff',
     color: 'white',
     borderRadius: '.3em'

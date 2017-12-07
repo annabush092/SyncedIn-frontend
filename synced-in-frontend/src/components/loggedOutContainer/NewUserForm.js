@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { inputStyle, textInputStyle, buttonDiv, buttonStyle } from '../reusables/form-style.js'
-import { navBarStyle, outsideNewUserPadding, headerStyle, alreadyUserMessage, loginLinkStyle, linkStyle, newUserFormStyle, nameInputStyle } from './new-user-form-style.js'
+import { navBarStyle } from '../navBarContainer/nav-bar-style.js'
+import { outsideNewUserPadding, headerStyle, alreadyUserMessage, loginLinkStyle, linkStyle, newUserFormStyle, nameInputStyle } from './new-user-form-style.js'
 
 import { postNewUser } from '../../actions/userActions.js'
 

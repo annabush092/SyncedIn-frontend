@@ -38,21 +38,15 @@ export function skillBoxStyle() {
     gridColumn: '2 / 3',
     gridRow: '1 / 2',
     padding: '1em',
-    // display: 'block',
-    // overflow: 'auto'
   }
 }
 
 export function nameHeaderStyle() {
   return {
-    // gridColumn: '1 / 3',
-    // gridRow: '1 / 2',
-    // color: '#f91818ff',
     fontSize: '3em',
     lineHeight: '1em',
     display: 'block',
     padding: '.5em',
-    // background: '#3a3a3a',
     textAlign: 'center'
   }
 }
@@ -70,10 +64,7 @@ export function skillList() {
 export function skillCardStyle() {
   return {
     display: 'inline-block',
-    // background: 'white',
     marginBottom: '1em',
-    // borderRadius: '.3em',
-    // border: 'solid #b2b2b2 .1em',
     width: '100%',
     marginRight: '1em'
   }
@@ -81,7 +72,7 @@ export function skillCardStyle() {
 
 export function skillHeader() {
   return {
-    fontSize: '1.6em',
+    fontSize: '1.2em',
     lineHeight: '1.2em',
     padding: '.5em',
     background: '#f91818ff',
