@@ -2,9 +2,10 @@ export function profileContainerStyle() {
   return {
     display: 'grid',
     gridTemplateColumns: 'max-content auto',
-    gridTemplateRows: 'max-content auto',
+    gridTemplateRows: 'min-content auto',
     gridColumnGap: '0',
-    gridRowGap: '0'
+    gridRowGap: '0',
+    lineHeight: '1'
   }
 }
 
@@ -38,6 +39,26 @@ export function skillBoxStyle() {
     gridColumn: '2 / 3',
     gridRow: '1 / 2',
     padding: '1em',
+    display: 'inline-block',
+    overflow: 'auto'
+  }
+}
+
+export function leftColumn(){
+  return {
+    width: '70%',
+    display: 'inline-block',
+    cssFloat: 'left'
+  }
+}
+
+export function rightColumn() {
+  return {
+    width: '30%',
+    display: 'inline-block',
+    cssFloat: 'left',
+    paddingLeft: '1em',
+    paddingRight: '1em',
   }
 }
 
@@ -45,9 +66,35 @@ export function nameHeaderStyle() {
   return {
     fontSize: '3em',
     lineHeight: '1em',
-    display: 'block',
     padding: '.5em',
-    textAlign: 'center'
+    textAlign: 'center',
+    display: 'block',
+    width: '100%',
+  }
+}
+
+export function profilePicStyle() {
+  return {
+    borderRadius: '50%',
+    width: '100%',
+    display: 'inline-block',
+  }
+}
+
+export function followDiv() {
+  return {
+    display: 'inline-block',
+    cssFloat: 'center',
+    width: '100%',
+    marginBottom: '1em'
+
+  }
+}
+
+export function skillDiv() {
+  return {
+    display: 'block',
+    width: '100%'
   }
 }
 
@@ -75,7 +122,7 @@ export function skillHeader() {
     fontSize: '1.2em',
     lineHeight: '1.2em',
     padding: '.5em',
-    background: '#f91818ff',
+    background: '#dd1616',
     color: 'white',
     borderRadius: '.3em .3em 0 0',
   }

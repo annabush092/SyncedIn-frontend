@@ -9,7 +9,7 @@ export function outerFormStyle() {
 
 export function headerStyle() {
   return {
-    background: '#f91818ff',
+    background: '#dd1616',
     color: 'white',
     padding: '1.5em',
     textAlign: 'center',
@@ -51,7 +51,6 @@ export function buttonDiv() {
     cssFloat: 'left',
     position: 'relative',
     color: 'white',
-    // fontSize: '1em'
   }
 }
 
@@ -70,7 +69,7 @@ export function buttonStyle() {
     position: 'relative',
     cssFloat: 'right',
     fontSize: '1.2em',
-    backgroundColor: '#f91818ff',
+    backgroundColor: '#dd1616',
     color: 'white',
     borderRadius: '.3em'
   }

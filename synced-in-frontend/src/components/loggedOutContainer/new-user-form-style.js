@@ -1,17 +1,5 @@
 import { inputStyle } from '../reusables/form-style.js'
 
-// export function navBarStyle() {
-//   return {
-//     background: '#262626',
-//     width: '100vw',
-//     paddingTop: '.2em',
-//     paddingLeft: '.2em',
-//     paddingRight: '1.2em',
-//     display: 'inline-block',
-//     overflow: 'auto',
-//   }
-// }
-
 export function outsideNewUserPadding() {
   return {
     paddingBottom: '2em',
@@ -33,7 +21,6 @@ export function alreadyUserMessage() {
 
 export function loginLinkStyle() {
   return {
-    // width: '8.5em',
     height: "100%",
     cssFloat: 'right',
     color: 'white',
@@ -51,9 +38,7 @@ export function linkStyle() {
     padding: '.5em',
     paddingLeft: '.75em',
     paddingRight: '.75em',
-    // paddingTop: '.75em',
-    // paddingBottom: '.75em',
-    backgroundColor: '#f91818ff',
+    backgroundColor: '#dd1616',
     color: 'white',
     borderRadius: '.3em',
     border: 'none',

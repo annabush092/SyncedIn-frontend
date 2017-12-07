@@ -1,6 +1,6 @@
 export function navBarStyle() {
   return {
-    background: '#262626',
+    background: '#dd1616',
     width: '100vw',
     paddingTop: '.2em',
     paddingLeft: '.2em',
@@ -38,7 +38,7 @@ export function navbarDivStyle() {
 
 export function navLinkStyle() {
   return {
-    backgroundColor: '#262626',
+    backgroundColor: '#dd1616',
     color: 'white',
     border: 'none',
     display: 'block',

@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import uuid from 'uuid'
 
-import { profileContainerStyle, followingListStyle, skillBoxStyle, postsBoxStyle, profileCardPadding, nameHeaderStyle, followingHeader, skillList } from './profile-style.js'
+import { profileContainerStyle, followingListStyle, skillBoxStyle, postsBoxStyle, profileCardPadding, nameHeaderStyle, followingHeader, skillList, profilePicStyle, skillDiv, followDiv, leftColumn, rightColumn } from './profile-style.js'
 
 import SkillCard from './SkillCard.js'
 import UserCard from '../userListContainer/UserCard.js'
@@ -56,18 +56,29 @@ class Profile extends React.Component {
             <h2 style={followingHeader()}>Following: </h2>
             {this.followingList()}
           </div>
+
           <div style={skillBoxStyle()}>
-            <div style={nameHeaderStyle()}>
-              {this.props.currentProfile.full_name}
+            <div style={leftColumn()}>
+              <div style={nameHeaderStyle()}>
+                {this.props.currentProfile.full_name}
+              </div>
+              <div style={skillDiv()}>
+                <h2>My Skills: </h2>
+                <div style={skillList()}>
+                  {this.renderSkills()}
+                </div>
+              </div>
             </div>
-            <FollowButton userId={this.props.currentProfile.id}/>
-            <div>
-              <h2>My Skills: </h2>
-              <div style={skillList()}>
-                {this.renderSkills()}
+            <div style={rightColumn()}>
+              <div style={followDiv()}>
+                <FollowButton userId={this.props.currentProfile.id}/>
+              </div>
+              <div>
+                <img src={this.props.currentProfile.picture_url} style={profilePicStyle()}/>
               </div>
             </div>
           </div>
+
           <div style={postsBoxStyle()}>
             <NewPostForm/>
             {sortPosts(this.postList())}
