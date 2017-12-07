@@ -29,9 +29,8 @@ export function profileCardPadding() {
     display: 'block',
     overflow: 'auto',
     paddingBottom: '1em',
-
-    width: '22em'
-
+    width: '28em',
+    fontSize: '.75em'
   }
 }
 
