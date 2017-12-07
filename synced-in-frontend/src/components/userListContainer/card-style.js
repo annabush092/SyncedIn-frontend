@@ -13,33 +13,35 @@ export function outsideCardPadding() {
     position: 'relative',
     display: 'inline-block',
     overflow: 'auto',
-    padding: '1em'
+    padding: '1em',
+    width: '40em'
   }
 }
 
 export function cardStyle() {
   return {
-    width: '22em',
-    minHeight: '10em',
+    width: '100%',
+    minHeight: '12em',
     borderRadius: '.3em',
     display: 'grid',
     border: 'solid #b2b2b2 .1em',
     background: 'white',
     padding: '1em',
-    gridTemplateColumns: 'auto auto',
+    gridTemplateColumns: '20% auto min-content',
     gridTemplateRows: 'max-content auto',
-    gridColumnGap: '.25em',
-    gridRowGap: '.5em',
+    gridColumnGap: '1em',
+    gridRowGap: '1em',
   }
 }
 
 export function cardHeaderStyle() {
   return {
-    fontSize: '1.6em',
+    fontSize: '2em',
     lineHeight: '1.2em',
     padding: 'none',
+    // paddingLeft: '.5em',
     color: '#f91818ff',
-    gridColumn: '1 / 2',
+    gridColumn: '2 / 3',
     gridRow: '1 / 2',
     alignSelf: 'center',
     cursor: 'pointer',
@@ -48,7 +50,7 @@ export function cardHeaderStyle() {
 
 export function followButtonDiv() {
   return {
-    gridColumn: '2 / 3',
+    gridColumn: '3 / 4',
     gridRow: '1 / 2'
   }
 }
@@ -66,19 +68,32 @@ export function followButton() {
 
 export function cardListStyle() {
   return {
-    gridColumn: '1 / 3',
+    gridColumn: '2 / 4',
     gridRow: '2 / 3',
     columns: '2',
+    columnGap: '.5em',
     display: 'inline-block'
   }
 }
 
 export function instrumentListStyle() {
   return {
-    fontSize: '1.1em',
+    fontSize: '1.3em',
     lineHeight: '1',
-    paddingBottom: '1em',
+    // paddingLeft: '1em',
+    paddingBottom: '.7em',
     display: 'inline-block',
     width: '100%'
+  }
+}
+
+export function pictureStyle() {
+  return {
+    gridColumn: '1 / 2',
+    gridRow: '1 / 3',
+    // paddingRight: '.5em',
+    // marginTop: '.5em',
+    width: '100%',
+    borderRadius: '50%',
   }
 }

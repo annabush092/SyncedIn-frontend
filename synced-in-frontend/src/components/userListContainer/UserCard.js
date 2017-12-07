@@ -3,7 +3,7 @@ import { withRouter, Redirect } from 'react-router-dom'
 import {connect} from 'react-redux'
 import uuid from 'uuid'
 
-import { cardStyle, cardHeaderStyle, cardListStyle, instrumentListStyle } from './card-style.js'
+import { cardStyle, cardHeaderStyle, cardListStyle, instrumentListStyle, pictureStyle } from './card-style.js'
 
 import { changeProfile, redirectToProfile } from '../../actions/userActions.js'
 import FollowButton from '../reusables/FollowButton.js'
@@ -28,6 +28,7 @@ class UserCard extends React.Component {
   render() {
     return(
       <div style={cardStyle()}>
+        <img style={pictureStyle()} src={this.props.picture_url}/>
         <div style={cardHeaderStyle()} onClick={this.onNameClick}>
           {this.props.full_name}
           {this.props.loadNewProfile ? (

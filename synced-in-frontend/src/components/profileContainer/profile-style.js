@@ -28,7 +28,10 @@ export function profileCardPadding() {
   return {
     display: 'block',
     overflow: 'auto',
-    paddingBottom: '1em'
+    paddingBottom: '1em',
+
+    width: '22em'
+
   }
 }
 
