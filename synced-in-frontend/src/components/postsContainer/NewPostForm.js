@@ -5,8 +5,6 @@ import uuid from 'uuid'
 import { Dropdown } from 'semantic-ui-react'
 import { textInputStyle, buttonDiv } from '../reusables/form-style.js'
 import { postInputStyle, dropdownStyle, newPostFormStyle, postButtonStyle, newPostPadding } from './new-post-form-style.js'
-import { outsideNewUserPadding } from '../loggedOutContainer/new-user-form-style.js'
-
 
 import {persistPost} from '../../actions/postActions.js'
 
