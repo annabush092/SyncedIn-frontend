@@ -1,8 +1,10 @@
 export function profileContainerStyle() {
   return {
+    width: '100%',
+    minHeight: '100vh',
     display: 'grid',
     gridTemplateColumns: 'max-content auto',
-    gridTemplateRows: 'min-content auto',
+    gridTemplateRows: 'auto auto',
     gridColumnGap: '0',
     gridRowGap: '0',
     lineHeight: '1'
@@ -14,7 +16,8 @@ export function followingListStyle() {
     gridColumn: '1 / 2',
     gridRow: '1 / 3',
     padding: '1em',
-    background: '#3a3a3a'
+    background: '#3a3a3a',
+    minWidth: '20em'
   }
 }
 
@@ -41,14 +44,14 @@ export function skillBoxStyle() {
     gridColumn: '2 / 3',
     gridRow: '1 / 2',
     padding: '1em',
-    display: 'inline-block',
+    display: 'block',
     overflow: 'auto'
   }
 }
 
 export function leftColumn(){
   return {
-    width: '70%',
+    width: '75%',
     display: 'inline-block',
     cssFloat: 'left'
   }
@@ -56,7 +59,7 @@ export function leftColumn(){
 
 export function rightColumn() {
   return {
-    width: '30%',
+    width: '25%',
     display: 'inline-block',
     cssFloat: 'left',
     paddingLeft: '1em',
@@ -79,6 +82,7 @@ export function profilePicStyle() {
   return {
     borderRadius: '50%',
     width: '100%',
+    maxWidth: '25em',
     display: 'inline-block',
   }
 }
