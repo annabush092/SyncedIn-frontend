@@ -1,13 +1,17 @@
 # syncedIn-frontend
 
 demo: https://www.youtube.com/watch?v=U9JzufNzcGU&t=15s
-backend: https://github.com/annabush092/syncedIn-backend
+
+backend repo: https://github.com/annabush092/syncedIn-backend
 
 built with: React, Redux, React-Router, Thunk middleware
 
 To run:
+
 yarn install
+
 yarn start (be sure to start the backend server first, and when prompted, type 'y' to start the server on a different port)
+
 
 Component Structure:
 
