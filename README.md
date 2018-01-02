@@ -1,17 +1,23 @@
 # syncedIn-frontend
 
+demo: https://www.youtube.com/watch?v=U9JzufNzcGU&t=15s
 backend: https://github.com/annabush092/syncedIn-backend
 
-frameworks: React, Redux
+built with: React, Redux, React-Router, Thunk middleware
 
-component structure: see googledoc
+To run:
+yarn install
+yarn start (be sure to start the backend server first, and when prompted, type 'y' to start the server on a different port)
+
+Component Structure:
+
+![Alt text](./frontend-wireframe.png)
+
 
 */
 TODO:
 
 Priority:
-
-  Formatting!
 
   Move error state into the loadingReducer instead of the userReducer.
   Move error check into loadingPrep
@@ -51,7 +57,6 @@ Stretch refactors:
   Worth it to disconnect UserCard/PostCard from the store? Is it slowing me down at all?
   Protect params in backend (require/permit)
 
-/*
 Random stretch features:
 
   Add instrument families to search users filter
@@ -71,3 +76,5 @@ Random stretch features:
   Allow users to link to each other in posts (think of twitter- you can follow people or mention their name in a tweet to get their attention)
 
   Allow users to directly message each other, but also give them the option to block direct messages
+
+  */
