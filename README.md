@@ -1,6 +1,6 @@
 # syncedIn-frontend
 
-demo: https://www.youtube.com/watch?v=U9JzufNzcGU&t=15s
+demo: https://youtu.be/_8oQKjvVSbY
 
 backend repo: https://github.com/annabush092/syncedIn-backend
 
